@@ -3,9 +3,9 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Heading from '@/components/Common/Heading';
+import SlidingText from '@/components/Common/SlidingText';
 
-Vue.component("Heading", Heading);
+Vue.component("SlidingText", SlidingText);
 
 Vue.config.productionTip = false
 
