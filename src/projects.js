@@ -1,5 +1,5 @@
-export default [
-  {
+export default {
+  "grynow": {
     title: "Grynow",
     subtitle: "Influencer marketing agency",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit!
@@ -9,7 +9,7 @@ export default [
     mainImage: "/projects/grynow.jpg",
     link: "/projects/grynow"
   },
-  {
+  "infox": {
     title: "Infoxpression",
     subtitle: "Annual Tech Fest of USICT",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit!
@@ -18,4 +18,4 @@ export default [
     mainImage: "/projects/infox.png",
     link: "/projects/infox"
   },
-]
+}

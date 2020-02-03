@@ -29,7 +29,6 @@ export default {
     },
     openProject(event) {
       let image = event.currentTarget;
-      let container = document.getElementById('container');
       console.log(image.getBoundingClientRect().top, image.getBoundingClientRect().left);
       const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       let scaleBy = vw/image.offsetWidth;
@@ -39,7 +38,9 @@ export default {
       image.style.transformOrigin = 'top left';
       image.style.transition = "transform 500ms ease";
       image.style.transform = `translate(-${image.getBoundingClientRect().left}px, -${image.getBoundingClientRect().top}px) scale(${scaleBy})`;
-      this.$router.push(this.data.link);
+      setTimeout(() => {
+        this.$router.push(this.data.link);
+      }, 500)
     }
   }
 }
