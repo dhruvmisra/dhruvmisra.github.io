@@ -1,16 +1,28 @@
 <template>
   <div id="container">
-    <h1 class="text-white display-4">Projects</h1>
+    <h1 class="title display-4">Projects</h1>
     <div id="sidescroll">
-      <div class="project"></div>
-      <div class="project"></div>
-      <div class="project"></div>
+      <Project v-for="(project, i) in projects" :key="i" :data="project" />
     </div>
   </div>
 </template>
 
 <script>
+import Project from './Project.vue';
+import projects from '@/projects';
+
 export default {
+  components: {
+    Project
+  },
+  data() {
+    return {
+      projects: []
+    }
+  },
+  created() {
+    this.projects = projects;
+  },
   mounted() {
     let doc = document.getElementById('sidescroll');
     let container = document.getElementById('container');
@@ -47,11 +59,5 @@ export default {
     align-items: center;
     padding-top: 30px;
   }
-  .project {
-    height: 80%;
-    width: 100vw;
-    background: rgba(255, 255, 255, 0.308);
-    border: solid 1px red;
-    /* margin: 20px; */
-  }
+
 </style>

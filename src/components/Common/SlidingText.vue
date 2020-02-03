@@ -1,7 +1,7 @@
 <template>
   <div class="heading">
     <transition name="slide">
-      <h1 class="display-4 text-white m-0" v-if="condition">
+      <h1 class="display-4 m-0" v-if="condition">
         <slot></slot>
       </h1>
     </transition>
