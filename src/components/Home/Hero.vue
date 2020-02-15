@@ -20,10 +20,10 @@ export default {
     }
   },
   mounted() {
-    setInterval(() => {
-      this.text++;
-      this.text %= this.totalText;
-    }, 2000);
+    // setInterval(() => {
+    //   this.text++;
+    //   this.text %= this.totalText;
+    // }, 2000);
   }
 }
 </script>
@@ -34,6 +34,8 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: transparent;
+    scroll-snap-align: start;
   }
   .image {
     width: 300px;

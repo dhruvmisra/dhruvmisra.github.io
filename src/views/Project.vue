@@ -1,23 +1,32 @@
 <template>
 <div>
   <div class="project">
-    <div class="project-image">
-      <img :src="getImage(project.mainImage)" alt="Grynow" class="mainImage">
+    <div class="project-image-container">
+      <!-- <img :src="getImage(project.mainImage)" alt="Grynow" class="project-image w-100"> -->
+
+      <div class="project-image" :style="{ backgroundImage: 'url(' + getImage(project.mainImage) + ')'}"></div>
+      <div class="overlay"></div>
+      <div class="title-container">
+        <h1>Grynow</h1>
+      </div>
     </div>
-    <div class="project-info">
-      <h1 class="font-weight-bold">{{ project.title }}</h1>
-      <h6 class="text-danger">{{ project.subtitle }}</h6>
-      <p>{{ project.description }}</p>
-      <p>{{ project.description }}</p>
-      <p>{{ project.description }}</p>
-      <p>{{ project.description }}</p>
-      <p>{{ project.description }}</p>
+    <div class="container">
+      <div class="card project-info">
+        <h1 class="font-weight-bold">{{ project.title }}</h1>
+        <h6 class="text-danger">{{ project.subtitle }}</h6>
+        <p>{{ project.description }}</p>
+        <p>{{ project.description }}</p>
+        <p>{{ project.description }}</p>
+        <p>{{ project.description }}</p>
+        <p>{{ project.description }}</p>
+      </div>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import { TimelineMax } from "gsap";
 import projects from '@/projects';
 
 export default {
@@ -29,53 +38,87 @@ export default {
   methods: {
     getImage(image) {
       return require("@/assets" + image);
+    },
+    scaleImage(event) {
+      const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      let val = 1 + window.scrollY/(8 * vh);
+      console.log(val);
+      let projectImage = document.getElementsByClassName('project-image')[0];
+      projectImage.style.transform = `scale(${val})`;
     }
+  },
+  mounted() {
+    // let controller = new ScrollMagic.Controller();
+    // let t1 = new TimelineMax();
+    // t1.to('.project-image', 3, { scale: 1.4, transformOrigin: 'center bottom' });
+
+    //Scene
+    // let scene = ScrollMagic.Scene({
+    //   triggerElement: ".project",
+    //   triggerHook: "0",
+    //   duration: "100%"
+    // })
+    //   .setTween(t1)
+    //   .addTo(controller)
+    
+
+    function updatePercentage() {
+      t1.progress();
+      console.log(t1.progress())
+    }
+
   },
   created() {
     window.scrollTo(0,0); 
     this.project = projects[this.$route.params.projectKey];
-    window.addEventListener("scroll", (event) => {
-      const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-      let val = window.scrollY/(2*vh);
-      console.log(val);
-      let mainImage = document.getElementsByClassName('mainImage')[0];
-      if(val <= 0.38) {
-        mainImage.style.position = 'fixed';
-        mainImage.style.width = `${100 - val*10}vw`;
-      } else {
-        mainImage.style.position = 'relative';
-        // document.getElementsByClassName('project-image')[0].style.height = 'fit-content';
-      }
-      
-    })
+    window.addEventListener("scroll", this.scaleImage)
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.scaleImage);
   }
 }
 </script>
 
 <style scoped>
 .project {
+  background: rgb(0, 0, 0);
   position: relative;
   /* display: flex; */
   justify-content: center;
 }
-.project-image {
-  height: 150vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  transition: all 300ms ease-out;
+.project-image-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
-.project-image img {
-  position: fixed;
+.text-container {
+  color: grey;
+}
+.project-image {
+  position: absolute;
   top: 0;
-  display: block;
-  margin-left: auto;
+  left: 0;
+  height: 100%;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transform-origin: bottom;
+}
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(0, black 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 .project-info {
-  background: #fff;
-  padding: 1em;
+  padding: 2em;
+  /* margin-top: -10em; */
+  border-radius: 1em;
+  border: none;
   transition: all 300ms ease-out;
 }
 </style>

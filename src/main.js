@@ -4,8 +4,10 @@ import router from './router'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SlidingText from '@/components/Common/SlidingText';
-
+import VueRellax from 'vue-rellax'
+ 
 Vue.component("SlidingText", SlidingText);
+Vue.use(VueRellax);
 
 Vue.config.productionTip = false
 

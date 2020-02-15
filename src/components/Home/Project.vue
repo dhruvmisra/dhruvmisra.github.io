@@ -1,11 +1,24 @@
 <template>
   <div class="project-container">
     <div class="project">
-      <div class="project-image" @click="openProject($event)">
-        <img :src="getImage(data.mainImage)" alt="Grynow" class="w-100">
+      <div class="project-image"
+          data-aos="fade-up"
+          data-aos-duration="500"
+          :data-aos-anchor="'#project' + data.id"
+          :data-aos-offset="data.id * vw"
+          @click="openProject($event)">
+        <img :src="getImage(data.mainImage)" alt="" class="w-100" />
       </div>
       <div class="project-info">
-        <h1 class="font-weight-bold">{{ data.title }}</h1>
+        <h1
+          class="title"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-easing="real-slow"
+          data-aos-delay="200"
+          :data-aos-anchor="'#project' + data.id"
+          :data-aos-offset="data.id * vw"
+        >{{ data.title }}</h1>
         <h6 class="text-danger">{{ data.subtitle }}</h6>
         <p>{{ data.description }}</p>
       </div>
@@ -16,12 +29,13 @@
 <script>
 export default {
   props: {
-    data: Object
+    data: Object,
+    vw: Number
   },
   data() {
     return {
-      clicked: false,
-    }
+      clicked: false
+    };
   },
   methods: {
     getImage(image) {
@@ -29,24 +43,32 @@ export default {
     },
     openProject(event) {
       let image = event.currentTarget;
-      console.log(image.getBoundingClientRect().top, image.getBoundingClientRect().left);
-      const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      let scaleBy = vw/image.offsetWidth;
+      console.log(
+        image.getBoundingClientRect().top,
+        image.getBoundingClientRect().left
+      );
+      const vw = Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+      );
+      let scaleBy = vw / image.offsetWidth;
       console.log(image.offsetWidth, vw, scaleBy);
-      image.style.zIndex = '10';
-      image.style.position = 'absolute';
-      image.style.transformOrigin = 'top left';
+      image.style.zIndex = "10";
+      image.style.position = "absolute";
+      image.style.transformOrigin = "top left";
       image.style.transition = "transform 500ms ease";
-      image.style.transform = `translate(-${image.getBoundingClientRect().left}px, -${image.getBoundingClientRect().top}px) scale(${scaleBy})`;
+      image.style.transform = `translate(-${
+        image.getBoundingClientRect().left
+      }px, -${image.getBoundingClientRect().top}px) scale(${scaleBy})`;
       setTimeout(() => {
         this.$router.push(this.data.link);
-      }, 500)
+      }, 500);
     }
   }
-}
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .project-container {
   position: relative;
   height: 80%;
@@ -78,7 +100,11 @@ export default {
   width: 60%;
   cursor: pointer;
   background-size: cover;
+  filter: drop-shadow(0 5px 25px rgb(50, 50, 50));
   transition: all 300ms ease-out;
+}
+.project-image img {
+  clip-path: polygon(0% 0%, 0% 85%, 10% 100%, 100% 100%, 100% 15%, 90% 0%);
 }
 /* 
 .project-image:hover, .project-info:hover + .project-image {
@@ -90,16 +116,42 @@ export default {
   padding-left: 23vw;
 } */
 .project-info {
-  background: #fff;
-  /* background: linear-gradient(270deg, white 50%, transparent 100%); */
-  /* box-shadow: -105px 8px 80px rgba(255, 255, 255, 1); */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+  box-shadow: -40px 10px 20px rgba(0, 0, 0, 0.1);
+  // border: solid 1px red;
+  height: fit-content;
   width: 30%;
   padding: 1em;
-  /* padding-left: 22vw; */
-  /* margin-left: -20vw; */
+  margin-left: -6em;
+  margin-top: -5em;
   cursor: pointer;
   z-index: 2;
   transition: all 300ms ease-out;
 }
+.title {
+  font-size: 7em;
+  text-shadow: 0 0 5px rgb(168, 168, 168);
+  transition: text-shadow 0.5s ease;
+  /* font-weight: bold; */
+}
+.title:hover {
+  text-shadow: 0 0 20px rgb(168, 168, 168);
+}
 
+[data-aos="title"] {
+  transform: translateX(-150px);
+  opacity: 0;
+  // transition-timing-function: cubic-bezier(0.07, 0.38, 0, 0.99) !important;
+}
+[data-aos="title"].aos-animate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+[data-aos] {
+  body[data-aos-easing="real-slow"] &,
+  &[data-aos][data-aos-easing="real-slow"] {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
+  }
+}
 </style>

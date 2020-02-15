@@ -2,7 +2,7 @@
   <div id="container">
     <h1 class="title display-4">Projects</h1>
     <div id="sidescroll">
-      <Project v-for="(project, i) in projects" :key="i" :data="project" />
+      <Project :id="'project' + project.id" v-for="(project, i) in projectsArray" :key="i" :data="project" :vw="vw" />
     </div>
   </div>
 </template>
@@ -17,11 +17,31 @@ export default {
   },
   data() {
     return {
-      projects: []
+      projects: {},
+      vw: 0
+    }
+  },
+  computed: {
+    projectsArray() {
+      let projectsArray = [], obj = {};
+      Object.keys(this.projects).forEach((key, i) => {
+        obj = this.projects[key];
+        obj.id = i;
+        projectsArray.push(obj);
+      });
+      return projectsArray;
     }
   },
   created() {
     this.projects = projects;
+    this.vw = window.innerWidth;
+    window.addEventListener("resize", () => {
+      this.vw = window.innerWidth;
+    });
+
+    window.addEventListener("scroll", () => {
+      console.log(window.scrollTop);
+    })
   },
   mounted() {
     let doc = document.getElementById('sidescroll');
@@ -48,6 +68,7 @@ export default {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+    scroll-snap-align: start;
   }
   #sidescroll {
     position: absolute;
