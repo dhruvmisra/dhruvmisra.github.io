@@ -43,7 +43,7 @@ export default {
     },
     openProject(event) {
       let image = event.currentTarget;
-      console.log(image.children[0]);
+      console.log(image);
       console.log(image.getBoundingClientRect().top, image.getBoundingClientRect().left);
       const vw = Math.max(
         document.documentElement.clientWidth,
@@ -51,15 +51,17 @@ export default {
       );
       let scaleBy = vw / image.offsetWidth;
       console.log(image.offsetWidth, vw, scaleBy);
-      image.style.zIndex = "10";
-      image.style.position = "absolute";
-      image.style.transition = "transform 500ms ease";
-      image.style.transformOrigin = "top left";
-      image.style.transform = `translate(${-image.getBoundingClientRect().left}px, ${-image.getBoundingClientRect().top}px) scale(${scaleBy})`;
-      image.children[0].style.clipPath = 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)';
+      image.children[0].style.clipPath = 'polygon(0% 0%, 0% 100%, 0% 100%, 100% 100%, 100% 0%, 100% 0%)';
+      setTimeout(() => {
+        image.style.zIndex = "10";
+        image.style.position = "absolute";
+        image.style.transition = "transform 500ms ease";
+        image.style.transformOrigin = "top left";
+        image.style.transform = `translate(${-image.getBoundingClientRect().left}px, ${-image.getBoundingClientRect().top}px) scale(${scaleBy})`;
+      }, 500);
       setTimeout(() => {
         this.$router.push(this.data.link);
-      }, 600);
+      }, 900);
     }
   }
 };
@@ -102,7 +104,7 @@ export default {
 }
 .project-image img {
   clip-path: polygon(0% 0%, 0% 85%, 10% 100%, 100% 100%, 100% 15%, 90% 0%);
-  transition: clip-path 1300ms ease-out !important;
+  transition: all 500ms ease-out;
 }
 /* 
 .project-image:hover, .project-info:hover + .project-image {
