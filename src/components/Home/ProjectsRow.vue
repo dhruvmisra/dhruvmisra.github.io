@@ -10,6 +10,8 @@
 <script>
 import Project from './Project.vue';
 import projects from '@/projects';
+import gsap from "gsap";
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 export default {
   components: {
@@ -38,17 +40,18 @@ export default {
     window.addEventListener("resize", () => {
       this.vw = window.innerWidth;
     });
-
-    window.addEventListener("scroll", () => {
-      console.log(window.scrollTop);
-    })
   },
   mounted() {
+    gsap.registerPlugin(ScrollToPlugin);
+
     let doc = document.getElementById('sidescroll');
     let container = document.getElementById('container');
     container.style.height = doc.clientWidth + 'px';
-    window.addEventListener("scroll", () => {
-      let top = container.getBoundingClientRect().top || 0;
+    let top;
+    let heightFromTop = container.getBoundingClientRect().top+window.scrollY;
+    let width = window.innerWidth;
+    window.addEventListener("scroll", (event) => {
+      top = container.getBoundingClientRect().top || 0;
       if(top <= 0) {
         doc.style.position = 'fixed';
         doc.style.left = top + 'px';
@@ -58,6 +61,27 @@ export default {
         doc.style.top = 0;
       }
     });
+    window.addEventListener('wheel', wheelFunction);
+    function wheelFunction(e) {
+      if(top < 0 && Math.abs(top) < container.getBoundingClientRect().height) {
+        if (e.deltaY < 0) {
+          console.log("scrolling up");
+          // if(Math.abs(top)%(2*width/3) < width/2) {
+          //   let multiples = Math.floor(Math.abs(top)/width);
+          //   console.log("haha", (multiples)*width );
+          //   gsap.to(window, {duration: 0.5, scrollTo: { y: heightFromTop + (multiples)*width }});
+          // }
+        }
+        if (e.deltaY > 0) {
+          console.log("scrolling down");
+          if(Math.abs(top)%(width/2) > width/3) {
+            let multiples = Math.floor(Math.abs(top)/width);
+            console.log("haha", (multiples)*width );
+            gsap.to(window, {duration: 0.5, scrollTo: { y: heightFromTop + (multiples + 1)*width }});
+          }
+        }
+      }
+    }
   }
 }
 </script>

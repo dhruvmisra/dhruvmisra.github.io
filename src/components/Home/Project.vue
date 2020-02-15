@@ -5,7 +5,7 @@
           data-aos="fade-up"
           data-aos-duration="500"
           :data-aos-anchor="'#project' + data.id"
-          :data-aos-offset="data.id * vw"
+          :data-aos-offset="data.id * vw + 300"
           @click="openProject($event)">
         <img :src="getImage(data.mainImage)" alt="" class="w-100" />
       </div>
@@ -17,7 +17,7 @@
           data-aos-easing="real-slow"
           data-aos-delay="200"
           :data-aos-anchor="'#project' + data.id"
-          :data-aos-offset="data.id * vw"
+          :data-aos-offset="data.id * vw + 300"
         >{{ data.title }}</h1>
         <h6 class="text-danger">{{ data.subtitle }}</h6>
         <p>{{ data.description }}</p>
@@ -43,10 +43,8 @@ export default {
     },
     openProject(event) {
       let image = event.currentTarget;
-      console.log(
-        image.getBoundingClientRect().top,
-        image.getBoundingClientRect().left
-      );
+      console.log(image.children[0]);
+      console.log(image.getBoundingClientRect().top, image.getBoundingClientRect().left);
       const vw = Math.max(
         document.documentElement.clientWidth,
         window.innerWidth || 0
@@ -55,14 +53,13 @@ export default {
       console.log(image.offsetWidth, vw, scaleBy);
       image.style.zIndex = "10";
       image.style.position = "absolute";
-      image.style.transformOrigin = "top left";
       image.style.transition = "transform 500ms ease";
-      image.style.transform = `translate(-${
-        image.getBoundingClientRect().left
-      }px, -${image.getBoundingClientRect().top}px) scale(${scaleBy})`;
+      image.style.transformOrigin = "top left";
+      image.style.transform = `translate(${-image.getBoundingClientRect().left}px, ${-image.getBoundingClientRect().top}px) scale(${scaleBy})`;
+      image.children[0].style.clipPath = 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)';
       setTimeout(() => {
         this.$router.push(this.data.link);
-      }, 500);
+      }, 600);
     }
   }
 };
@@ -105,6 +102,7 @@ export default {
 }
 .project-image img {
   clip-path: polygon(0% 0%, 0% 85%, 10% 100%, 100% 100%, 100% 15%, 90% 0%);
+  transition: clip-path 1300ms ease-out !important;
 }
 /* 
 .project-image:hover, .project-info:hover + .project-image {
@@ -129,7 +127,7 @@ export default {
   transition: all 300ms ease-out;
 }
 .title {
-  font-size: 7em;
+  font-size: 7vw;
   text-shadow: 0 0 5px rgb(168, 168, 168);
   transition: text-shadow 0.5s ease;
   /* font-weight: bold; */
