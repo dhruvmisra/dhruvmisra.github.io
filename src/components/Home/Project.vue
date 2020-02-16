@@ -51,6 +51,7 @@ export default {
     },
     openProject(event) {
       let image = event.currentTarget;
+      let info = image.parentNode.firstChild.nextSibling;
       console.log(
         image.getBoundingClientRect().top,
         image.getBoundingClientRect().left
@@ -63,6 +64,8 @@ export default {
       console.log(image.offsetWidth, vw, scaleBy);
       image.children[0].style.clipPath =
         "polygon(0% 0%, 100% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%)";
+      info.style.transform = 'translateX(50px)';
+      info.style.opacity = 0;
       setTimeout(() => {
         image.style.zIndex = "10";
         image.style.position = "absolute";
@@ -119,6 +122,9 @@ export default {
 .project-image img {
   clip-path: polygon(0% 15%, 85% 0%, 100% 15%, 100% 85%, 15% 100%, 0% 85%);
   transition: all 500ms ease-out;
+}
+.project-image img:hover {
+  clip-path: polygon(0% 10%, 90% 0%, 100% 15%, 100% 90%, 10% 100%, 0% 85%);
 }
 /* 
 .project-image:hover, .project-info:hover + .project-image {

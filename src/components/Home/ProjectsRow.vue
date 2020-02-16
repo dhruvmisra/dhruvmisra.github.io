@@ -50,7 +50,7 @@ export default {
     let top;
     let heightFromTop = container.getBoundingClientRect().top+window.scrollY;
     let width = window.innerWidth;
-    window.addEventListener("scroll", (event) => {
+    window.addEventListener("scroll", () => {
       top = container.getBoundingClientRect().top || 0;
       if(top <= 0) {
         doc.style.position = 'fixed';
