@@ -19,6 +19,11 @@
         <p>{{ project.description }}</p>
       </div>
     </div>
+    <section class="images">
+        <img src="@/assets/projects/grynow.jpg" alt="" class="image">
+        <img src="@/assets/projects/grynow.jpg" alt="" class="image">
+        <img src="@/assets/projects/grynow.jpg" alt="" class="image">
+    </section>
   </div>
 </div>
 </template>
@@ -58,20 +63,6 @@ export default {
       document.getElementsByClassName('project-image')[0].style.height = this.img.height*ratio + 'px';
     }
   },
-  mounted() {
-    // let controller = new ScrollMagic.Controller();
-    // let t1 = new TimelineMax();
-    // t1.to('.project-image', 3, { scale: 1.4, transformOrigin: 'center bottom' });
-
-    //Scene
-    // let scene = ScrollMagic.Scene({
-    //   triggerElement: ".project",
-    //   triggerHook: "0",
-    //   duration: "100%"
-    // })
-    //   .setTween(t1)
-    //   .addTo(controller)
-  },
   created() {
     window.scrollTo(0,0); 
     this.project = projects[this.$route.params.projectKey];
@@ -87,7 +78,6 @@ export default {
 
 <style scoped>
 .project {
-  background: rgb(0, 0, 0);
   position: relative;
 }
 .project-image-container {
@@ -125,7 +115,7 @@ export default {
   }
 }
 .project-info {
-  background: linear-gradient(0, black 0%, rgb(19, 19, 19) 100%);
+  background: linear-gradient(0, transparent 0%, rgb(14, 13, 26) 100%);
   padding: 2em;
   /* margin-top: -8em; */
   border-radius: 1em;
@@ -151,5 +141,24 @@ export default {
   margin-top: -20%;
   z-index: 1;
 }
-
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 4em;
+  border:brown 1px solid;
+}
+.image {
+  position: relative;
+  width: 50%;
+  box-shadow: 0 5px 25px rgb(50, 50, 50, 0.25);
+}
+.image:nth-child(2) {
+  transform: translate(-30%, 60%);
+  z-index: 2;
+}
+.image:nth-child(3) {
+  transform: translate(-30%, 30%);
+}
 </style>
