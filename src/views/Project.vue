@@ -3,21 +3,19 @@
   <div class="project">
     <div class="project-image-container">
       <!-- <img :src="getImage(project.mainImage)" alt="Grynow" class="w-100"> -->
-
       <div class="project-image" :style="{ backgroundImage: 'url(' + getImage(project.mainImage) + ')'}"></div>
       <div class="overlay"></div>
-      <!-- <div class="title-container">
-        <h1>Grynow</h1>
-      </div> -->
+    </div>
+    <div class="title-container">
+      <Heading data-aos="fade-up" large>{{ project.title }}</Heading>
     </div>
     <div class="container">
       <div class="card project-info">
-        <h1 class="font-weight-bold">{{ project.title }}</h1>
+        <!-- <h1 class="font-weight-bold">{{ project.title }}</h1> -->
         <h6 class="text-danger">{{ project.subtitle }}</h6>
+        <h5 class="text-muted">Description</h5>
         <p>{{ project.description }}</p>
-        <p>{{ project.description }}</p>
-        <p>{{ project.description }}</p>
-        <p>{{ project.description }}</p>
+        <h5 class="text-muted">Job title</h5>
         <p>{{ project.description }}</p>
       </div>
     </div>
@@ -91,8 +89,6 @@ export default {
 .project {
   background: rgb(0, 0, 0);
   position: relative;
-  /* display: flex; */
-  justify-content: center;
 }
 .project-image-container {
   position: relative;
@@ -100,21 +96,16 @@ export default {
   width: 100vw;
   overflow: hidden;
 }
-.text-container {
-  color: grey;
-}
 .project-image {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   /* height: 100vh; */
+  position: relative;
   width: 100%;
   background-size: contain;
   background-position: top center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   transform-origin: bottom;
-  transition: background-size 1s ease !important;
+  filter: blur(5px);
 }
 .overlay {
   height: 100%;
@@ -134,9 +125,9 @@ export default {
   }
 }
 .project-info {
-  background: rgb(41, 41, 41);
+  background: linear-gradient(0, black 0%, rgb(19, 19, 19) 100%);
   padding: 2em;
-  margin-top: -8em;
+  /* margin-top: -8em; */
   border-radius: 1em;
   border: none;
   opacity: 0;
@@ -153,4 +144,12 @@ export default {
     opacity: 1;
   }
 }
+.title-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-top: -20%;
+  z-index: 1;
+}
+
 </style>

@@ -74,10 +74,11 @@ export default {
         }
         if (e.deltaY > 0) {
           console.log("scrolling down");
-          if(Math.abs(top)%(width/2) > width/3) {
+          let threshold = Math.abs(top)%(width/2);
+          if(threshold > width/3 &&  threshold < 2*width/3) {
             let multiples = Math.floor(Math.abs(top)/width);
             console.log("haha", (multiples)*width );
-            gsap.to(window, {duration: 0.5, scrollTo: { y: heightFromTop + (multiples + 1)*width }});
+            gsap.to(window, {duration: 0.5, scrollTo: { y: heightFromTop + (multiples + 1)*width, autoKill: true }});
           }
         }
       }

@@ -45,4 +45,10 @@ export default {
       }
     }
   }
+  [data-aos] {
+    body[data-aos-easing="real-slow"] &,
+    &[data-aos][data-aos-easing="real-slow"] {
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
+    }
+  }
 </style>

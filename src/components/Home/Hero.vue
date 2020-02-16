@@ -3,10 +3,10 @@
     <SlidingText :condition="text == 0">Hi</SlidingText>
 
     <section class="d-block">
-        <div class="image" key="2" v-if="text == 2" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
-          <img src="@/assets/photo.jpg" alt="Photo" class="w-100">
-        </div>
-        <SlidingText :condition="text == 1 || text == 2">I'm <b>Dhruv Misra</b></SlidingText>
+      <div class="image" key="2" v-if="text == 2" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+        <img src="@/assets/photo.jpg" alt="Photo" class="w-100">
+      </div>
+      <SlidingText :condition="text == 1 || text == 2">I'm <b>Dhruv Misra</b></SlidingText>
     </section>
   </div>
 </template>

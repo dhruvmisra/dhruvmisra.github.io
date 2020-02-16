@@ -1,26 +1,34 @@
 <template>
   <div class="project-container">
     <div class="project">
-      <div class="project-image"
-          data-aos="fade-up"
-          data-aos-duration="500"
-          :data-aos-anchor="'#project' + data.id"
-          :data-aos-offset="data.id * vw + 300"
-          @click="openProject($event)">
-        <img :src="getImage(data.mainImage)" alt="" class="w-100" />
+      <div
+        class="project-image"
+        data-aos="fade-up"
+        data-aos-duration="500"
+        :data-aos-anchor="'#project' + data.id"
+        :data-aos-offset="data.id * vw + 300"
+        @click="openProject($event)"
+      >
+        <img :src="getImage(data.mainImage)" alt class="w-100" />
       </div>
       <div class="project-info">
-        <h1
-          class="title"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-          data-aos-easing="real-slow"
-          data-aos-delay="200"
+        <Heading
           :data-aos-anchor="'#project' + data.id"
           :data-aos-offset="data.id * vw + 300"
-        >{{ data.title }}</h1>
-        <h6 class="text-danger">{{ data.subtitle }}</h6>
-        <p>{{ data.description }}</p>
+        >{{ data.title }}</Heading>
+        <h6
+          class="text-danger"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          :data-aos-anchor="'#project' + data.id"
+          :data-aos-offset="data.id * vw + 300"
+        >{{ data.subtitle }}</h6>
+        <p
+          data-aos="fade-right"
+          data-aos-delay="400"
+          :data-aos-anchor="'#project' + data.id"
+          :data-aos-offset="data.id * vw + 300"
+        >{{ data.description }}</p>
       </div>
     </div>
   </div>
@@ -43,21 +51,25 @@ export default {
     },
     openProject(event) {
       let image = event.currentTarget;
-      console.log(image);
-      console.log(image.getBoundingClientRect().top, image.getBoundingClientRect().left);
+      console.log(
+        image.getBoundingClientRect().top,
+        image.getBoundingClientRect().left
+      );
       const vw = Math.max(
         document.documentElement.clientWidth,
         window.innerWidth || 0
       );
       let scaleBy = vw / image.offsetWidth;
       console.log(image.offsetWidth, vw, scaleBy);
-      image.children[0].style.clipPath = 'polygon(0% 0%, 0% 100%, 0% 100%, 100% 100%, 100% 0%, 100% 0%)';
+      image.children[0].style.clipPath =
+        "polygon(0% 0%, 100% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%)";
       setTimeout(() => {
         image.style.zIndex = "10";
         image.style.position = "absolute";
         image.style.transition = "transform 500ms ease";
         image.style.transformOrigin = "top left";
-        image.style.transform = `translate(${-image.getBoundingClientRect().left}px, ${-image.getBoundingClientRect().top}px) scale(${scaleBy})`;
+        image.style.transform = `translate(${-image.getBoundingClientRect()
+          .left}px, ${-image.getBoundingClientRect().top}px) scale(${scaleBy})`;
       }, 500);
       setTimeout(() => {
         this.$router.push(this.data.link);
@@ -91,8 +103,10 @@ export default {
 } */
 .project {
   display: flex;
+  flex-wrap: wrap;
   max-height: 100%;
   justify-content: center;
+  align-items: flex-start;
 }
 .project-image {
   position: relative;
@@ -100,10 +114,10 @@ export default {
   cursor: pointer;
   background-size: cover;
   filter: drop-shadow(0 5px 25px rgb(50, 50, 50));
-  transition: all 300ms ease-out;
+  transition: all 500ms ease;
 }
 .project-image img {
-  clip-path: polygon(0% 0%, 0% 85%, 10% 100%, 100% 100%, 100% 15%, 90% 0%);
+  clip-path: polygon(0% 15%, 85% 0%, 100% 15%, 100% 85%, 15% 100%, 0% 85%);
   transition: all 500ms ease-out;
 }
 /* 
@@ -116,15 +130,15 @@ export default {
   padding-left: 23vw;
 } */
 .project-info {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
-  box-shadow: -40px 10px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+  box-shadow: -40px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5em;
   // border: solid 1px red;
   height: fit-content;
   width: 30%;
   padding: 1em;
-  margin-left: -6em;
+  margin-left: -4em;
   margin-top: -5em;
-  cursor: pointer;
   z-index: 2;
   transition: all 300ms ease-out;
 }
@@ -132,26 +146,23 @@ export default {
   font-size: 7vw;
   text-shadow: 0 0 5px rgb(168, 168, 168);
   transition: text-shadow 0.5s ease;
-  /* font-weight: bold; */
+  cursor: pointer;
+  // font-weight: bold;
 }
 .title:hover {
   text-shadow: 0 0 20px rgb(168, 168, 168);
 }
 
-[data-aos="title"] {
-  transform: translateX(-150px);
-  opacity: 0;
-  // transition-timing-function: cubic-bezier(0.07, 0.38, 0, 0.99) !important;
-}
-[data-aos="title"].aos-animate {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-[data-aos] {
-  body[data-aos-easing="real-slow"] &,
-  &[data-aos][data-aos-easing="real-slow"] {
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
+@media only screen and (max-width: 992px) {
+  .project {
+    padding: 2em;
+  }
+  .project-image {
+    width: 100%;
+  }
+  .project-info {
+    width: 100%;
+    margin: 0;
   }
 }
 </style>
