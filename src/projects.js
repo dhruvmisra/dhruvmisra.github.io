@@ -1,7 +1,7 @@
 export default {
   "grynow": {
     title: "Grynow",
-    subtitle: "Influencer marketing agency",
+    type: "Influencer marketing agency",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit!
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem quis placeat, omnis nostrum ut numquam.`,
     // mainImage: "/projects/earth.gif"
@@ -10,7 +10,7 @@ export default {
   },
   "infox": {
     title: "Infoxpression",
-    subtitle: "Annual Tech Fest of USICT",
+    type: "Annual Tech Fest of USICT",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, velit!
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem quis placeat, omnis nostrum ut numquam.`,
     mainImage: "/projects/infox.png",

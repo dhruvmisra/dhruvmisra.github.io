@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="projects">
     <h1 class="title display-4">Projects</h1>
     <div id="sidescroll">
       <Project :id="'project' + project.id" v-for="(project, i) in projectsArray" :key="i" :data="project" :vw="vw" />
@@ -45,7 +45,7 @@ export default {
     gsap.registerPlugin(ScrollToPlugin);
 
     let doc = document.getElementById('sidescroll');
-    let container = document.getElementById('container');
+    let container = document.getElementById('projects');
     container.style.height = doc.clientWidth + 'px';
     let top;
     let heightFromTop = container.getBoundingClientRect().top+window.scrollY;
@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style scoped>
-  #container {
+  #projects {
     position: relative;
     height: 100vh;
     width: 100vw;

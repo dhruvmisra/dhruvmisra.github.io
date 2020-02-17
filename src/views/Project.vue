@@ -12,17 +12,19 @@
     <div class="container">
       <div class="card project-info">
         <!-- <h1 class="font-weight-bold">{{ project.title }}</h1> -->
-        <h6 class="text-danger">{{ project.subtitle }}</h6>
+        <h6 class="text-danger">{{ project.type }}</h6>
         <h5 class="text-muted">Description</h5>
         <p>{{ project.description }}</p>
         <h5 class="text-muted">Job title</h5>
         <p>{{ project.description }}</p>
       </div>
     </div>
-    <section class="images">
-        <img src="@/assets/projects/grynow.jpg" alt="" class="image">
-        <img src="@/assets/projects/grynow.jpg" alt="" class="image">
-        <img src="@/assets/projects/grynow.jpg" alt="" class="image">
+    <section class="images-section">
+      <div class="images-container">
+        <img src="@/assets/projects/grynow.jpg" alt="" class="image" v-rellax="{ speed: 0, wrapper: '.images-section', relativeToWrapper: true }">
+        <img src="@/assets/projects/grynow.jpg" alt="" class="image" v-rellax="{ speed: 2, wrapper: '.images-section', relativeToWrapper: true }">
+        <img src="@/assets/projects/grynow.jpg" alt="" class="image" v-rellax="{ speed: 1, wrapper: '.images-section', relativeToWrapper: true }">
+      </div>
     </section>
   </div>
 </div>
@@ -138,27 +140,41 @@ export default {
   position: relative;
   width: 100%;
   text-align: center;
-  margin-top: -20%;
+  margin-top: -30%;
+  margin-bottom: 5%;
   z-index: 1;
 }
-.images {
+.images-section {
+  /* height: 150vh; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   padding: 4em;
-  border:brown 1px solid;
+  border:brown 4px solid;
+  overflow-y: hidden;
+
+}
+.images-container {
+  display: block;
+  width: 50%;
 }
 .image {
   position: relative;
-  width: 50%;
+  width: 100%;
   box-shadow: 0 5px 25px rgb(50, 50, 50, 0.25);
 }
-.image:nth-child(2) {
-  transform: translate(-30%, 60%);
+.image:nth-child(1) {
+  margin-left: -30%;
   z-index: 2;
 }
+.image:nth-child(2) {
+  margin-left: 40%;
+  z-index: 2;
+  margin-top: -10%;
+}
 .image:nth-child(3) {
-  transform: translate(-30%, 30%);
+  margin-left: 5%;
+  margin-top: -10%;
 }
 </style>

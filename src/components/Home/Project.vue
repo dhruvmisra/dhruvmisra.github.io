@@ -22,7 +22,7 @@
           data-aos-delay="300"
           :data-aos-anchor="'#project' + data.id"
           :data-aos-offset="data.id * vw + 300"
-        >{{ data.subtitle }}</h6>
+        >{{ data.type }}</h6>
         <p
           data-aos="fade-right"
           data-aos-delay="400"

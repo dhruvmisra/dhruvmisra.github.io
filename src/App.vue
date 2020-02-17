@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <Navbar />
     <!-- <ParticlesJS /> -->
     <router-view/>
   </div>
 </template>
 
 <script>
+import Navbar from '@/components/Common/Navbar';
 import ParticlesJS from '@/components/Common/ParticlesJS';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -18,7 +20,8 @@ export default {
     });
   },
   components: {
-    ParticlesJS
+    ParticlesJS,
+    Navbar
   }
 }
 </script>
