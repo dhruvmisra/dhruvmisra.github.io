@@ -1,0 +1,15 @@
+assets/
+build/
+coverage/
+styles/
+data/
+*.strings.js
+*.styled.jsx
+*.styled.tsx
+*.styles.tsx
+*.d.ts
+*.css
+*.log
+store/common/
+package-lock.json
+yarn.lock
