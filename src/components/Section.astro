@@ -1,15 +1,16 @@
 ---
 export interface Props {
     title?: string;
+    className?: string;
 }
 
-const { title } = Astro.props;
+const { title, className } = Astro.props;
 ---
 
-<section class="relative overflow-hidden">
+<section class={`relative overflow-hidden pb-8 ${className}`}>
     <h2 class="relative inline-block text-5xl font-bold mb-10">{title}</h2>
     <span class="text-massive font-bold text-vertical absolute top-0 right-0 opacity-5">{title}</span>
-    <div class="container py-8">
+    <div>
         <slot />
     </div>
 </section>

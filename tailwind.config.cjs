@@ -1,8 +1,11 @@
 
 const baseColors = {
     electricViolet: `#8F00FF`,
+    mediumSlateBlue: `#8553F4`,
     raspberry: `#DD1155`,
     oxfordBlue: `#050824`,
+    // oxfordBlue: `#11182C`,
+    emerald: `#45D3A1`,
     ghostWhite: `#F4F4F9`,
     redPigment: `#F52C29`,
     mango: `#FFBD00`,
@@ -19,9 +22,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: baseColors.electricViolet,
+                primary: baseColors.mediumSlateBlue,
                 "light-bg": baseColors.ghostWhite,
-                "dark-bg": baseColors.xiketic
+                "dark-bg": baseColors.xiketic,
+                highlight: baseColors.mango,
+                ...baseColors
             },
         },
         container: {

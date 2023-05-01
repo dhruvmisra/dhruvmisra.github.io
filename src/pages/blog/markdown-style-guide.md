@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "@/layouts/BlogPost.astro"
 title: "Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
 pubDate: "Jul 01 2022"
@@ -58,17 +58,28 @@ The blockquote element represents content that is quoted from another source, op
 
 ## Code Blocks
 
-```html
+```html title="index.html" test="wow" {1-3,10}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <title>Example HTML5 Documentation</title>
         <title>Example HTML5 Document</title>
     </head>
     <body>
         <p>Test</p>
     </body>
 </html>
+```
+
+```js title="index.js"
+-const a = "this is shit";  // [!code --]
++const a = "this is amazing";  // [!code ++]
+
+const test = () => {
+    console.log(a);
+}
+test()
 ```
 
 ## List Types
@@ -103,6 +114,6 @@ H<sub>2</sub>O
 
 X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
-Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.
+Press <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.

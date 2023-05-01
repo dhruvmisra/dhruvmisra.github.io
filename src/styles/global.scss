@@ -1,0 +1,53 @@
+html { scroll-behavior : smooth; }
+
+.noise {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -20;
+        width: 150%;
+        top: 0%;
+        bottom: 10%;
+        left: -25%;
+        height: 100vh;
+        background: url(/assets/noise-white.webp) repeat, linear-gradient(83.21deg,#3245ff 0%,#bc52ee 100%);
+        background-blend-mode: overlay;
+        mask-image: radial-gradient(rgba(0,0,0,.5), transparent 70%);
+        // opacity: 0.5;
+    }
+}
+
+// .dark {
+//     .noise {
+//         &::before {
+//             background: url(/assets/noise-white.webp) repeat, linear-gradient(83.21deg,#3245ff 0%,#bc52ee 100%);
+//             opacity: 1;
+//         }
+//     }
+// }
+
+.bg-grid {
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right,#23262D 1px,transparent 1px),linear-gradient(to bottom,#23262D 1px,transparent 1px);
+    background-position: top center;
+    image-rendering: pixelated;
+}
+
+.bg-mask {
+    mask-image: linear-gradient(to bottom,transparent,10%,white,90%,transparent);
+}
+
+.circle-underlay::before {
+    content: "";
+    position: absolute;
+    bottom: -40%;
+    right: 70%;
+    background: rgba(255 255 255 / 5%);
+    width: 5em;
+    height: 5em;
+    z-index: -1;
+    border-radius: 100%;
+    border: 1px solid rgba(255 255 255 / 10%);
+}

@@ -27,7 +27,6 @@ const ThemeToggle = () => {
         <div>
             <input type="checkbox" id="theme-toggle" checked={theme === Theme.dark} onChange={handleChange} />
             <label htmlFor="theme-toggle" className={`toggle ${isMounted ? "" : "invisible"}`}>
-                <span className="absolute invisible">Theme toggle</span>
                 {isMounted && (
                     <>
                         <span className="toggle-switch">

@@ -18,7 +18,7 @@ const posts = await Astro.glob("../pages/blog/*.md");
             </p>
         </div>
 
-        <Section title="Articles">
+        <Section title="Articles" className="circle-underlay">
             <ArticlesGrid posts={posts} />
         </Section>
     </article>
