@@ -37,3 +37,23 @@ const {
         <PageProgress client:load />
     </article>
 </Base>
+<!-- 
+<script is:inline>
+    const handleMouseMove = (e) => {
+        const { currentTarget } = e;
+
+        for (let card of currentTarget.querySelectorAll(".card")) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+        }
+    };
+    const codeBlocks = document.querySelectorAll("pre")
+    for (const codeBlock of codeBlocks) {
+
+    }
+    .addEventListener("mousemove", handleMouseMove);
+</script> -->

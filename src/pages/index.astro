@@ -4,7 +4,7 @@ import Base from "@/layouts/Base.astro";
 import Section from "@/components/Section.astro";
 import ArticlesGrid from "@/components/ArticlesGrid.astro";
 
-const posts = await Astro.glob("../pages/blog/*.md");
+const posts = await Astro.glob("./blog/*.{md,mdx}");
 ---
 
 <Base title={SITE_TITLE} description={SITE_DESCRIPTION}>
