@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import preact from "@astrojs/preact";
 import compress from "astro-compress";
 import robotsTxt from "astro-robots-txt";
+import partytown from "@astrojs/partytown";
 import { astroImageTools } from "astro-imagetools";
 import rehypePrettyCode from "rehype-pretty-code";
 import { visit } from "unist-util-visit";
@@ -67,5 +68,18 @@ export default defineConfig({
         rehypePlugins: [addRawCodeToMetaNode, [rehypePrettyCode, prettyCodeOptions], addRawCodeToChildProperties],
         extendDefaultPlugins: true,
     },
-    integrations: [preact(), mdx(), sitemap(), tailwind(), astroImageTools, compress(), robotsTxt()],
+    integrations: [
+        preact(),
+        mdx(),
+        sitemap(),
+        tailwind(),
+        astroImageTools,
+        compress(),
+        robotsTxt(),
+        partytown({
+            config: {
+                forward: ["dataLayer.push"],
+            },
+        }),
+    ],
 });
