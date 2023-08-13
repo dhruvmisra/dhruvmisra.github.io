@@ -61,7 +61,7 @@ const addRawCodeToChildProperties = () => (tree) => {
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://example.com",
+    site: "https://dhruvmisra.com",
     markdown: {
         syntaxHighlight: false,
         rehypePlugins: [addRawCodeToMetaNode, [rehypePrettyCode, prettyCodeOptions], addRawCodeToChildProperties],

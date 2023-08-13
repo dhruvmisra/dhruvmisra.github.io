@@ -1,0 +1,727 @@
+<style lang="scss">
+    .stars-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgb(0, 6, 22);
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+        --twinkle-duration: 4s;
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            // animation: twinkle var(--twinkle-duration) ease-in-out infinite;
+
+            &:nth-child(2) {
+                animation-delay: calc(var(--twinkle-duration) * -0.33);
+            }
+            &:nth-child(3) {
+                animation-delay: calc(var(--twinkle-duration) * -0.66);
+            }
+
+            @keyframes twinkle {
+                25% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .star {
+            fill: white;
+
+            &:nth-child(3n) {
+                opacity: 0.8;
+            }
+            &:nth-child(7n) {
+                opacity: 0.6;
+            }
+            &:nth-child(13n) {
+                opacity: 0.4;
+            }
+            &:nth-child(19n) {
+                opacity: 0.2;
+            }
+        }
+
+        .comet {
+            transform-origin: center center;
+            animation: comet 10s linear infinite;
+
+            @keyframes comet {
+                0%,
+                40% {
+                    transform: translateX(0);
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                60%,
+                100% {
+                    transform: translateX(-100vmax);
+                    opacity: 0;
+                }
+            }
+        }
+
+        .comet-b {
+            animation-delay: -3.3s;
+        }
+
+        .comet-c {
+            animation-delay: -5s;
+        }
+
+        .night-bg {
+            position: absolute;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgb(0, 6, 22);
+            background: linear-gradient(
+                180deg,
+                rgba(0, 6, 22, 0) 0%,
+                rgba(0, 6, 22, 0.2) 10%,
+                rgba(4, 47, 73, 1) 78%,
+                rgba(132, 101, 76, 1) 96%,
+                rgba(205, 97, 0, 1) 100%
+            );
+        }
+    }
+</style>
+
+<div class="stars-wrapper">
+    <svg class="stars" width="100%" height="100%" preserveAspectRatio="none">
+        <circle class="star" cx="85.06%" cy="47.96%" r="1.2"></circle>
+        <circle class="star" cx="24.88%" cy="16.57%" r="0.8"></circle>
+        <circle class="star" cx="80.92%" cy="14.18%" r="0.7"></circle>
+        <circle class="star" cx="79.1%" cy="26%" r="1.2"></circle>
+        <circle class="star" cx="67.33%" cy="25.35%" r="1"></circle>
+        <circle class="star" cx="17.46%" cy="54.64%" r="0.5"></circle>
+        <circle class="star" cx="14.47%" cy="50.72%" r="0.8"></circle>
+        <circle class="star" cx="18.82%" cy="91.29%" r="0.9"></circle>
+        <circle class="star" cx="6.69%" cy="68.91%" r="1.1"></circle>
+        <circle class="star" cx="4.88%" cy="89.06%" r="0.5"></circle>
+        <circle class="star" cx="63.43%" cy="28.75%" r="1.2"></circle>
+        <circle class="star" cx="2.35%" cy="43.93%" r="0.8"></circle>
+        <circle class="star" cx="89.52%" cy="77.62%" r="1.4"></circle>
+        <circle class="star" cx="88.42%" cy="93%" r="1"></circle>
+        <circle class="star" cx="23.1%" cy="43.33%" r="0.8"></circle>
+        <circle class="star" cx="59.47%" cy="70.67%" r="1.3"></circle>
+        <circle class="star" cx="29.71%" cy="37.71%" r="1.1"></circle>
+        <circle class="star" cx="82.59%" cy="61.93%" r="0.8"></circle>
+        <circle class="star" cx="92.58%" cy="3.72%" r="0.6"></circle>
+        <circle class="star" cx="16.53%" cy="81.56%" r="0.9"></circle>
+        <circle class="star" cx="38.66%" cy="10.74%" r="0.5"></circle>
+        <circle class="star" cx="46.85%" cy="19.78%" r="0.8"></circle>
+        <circle class="star" cx="28.35%" cy="4.02%" r="0.6"></circle>
+        <circle class="star" cx="51.01%" cy="11.32%" r="1.3"></circle>
+        <circle class="star" cx="54.87%" cy="6.15%" r="0.8"></circle>
+        <circle class="star" cx="16.64%" cy="9.09%" r="1.4"></circle>
+        <circle class="star" cx="3.62%" cy="11.01%" r="1.5"></circle>
+        <circle class="star" cx="63.03%" cy="46.71%" r="1.3"></circle>
+        <circle class="star" cx="36.86%" cy="44.51%" r="1.1"></circle>
+        <circle class="star" cx="92.6%" cy="0.99%" r="0.5"></circle>
+        <circle class="star" cx="32.86%" cy="18.14%" r="1.5"></circle>
+        <circle class="star" cx="17.7%" cy="20.22%" r="1.1"></circle>
+        <circle class="star" cx="30.47%" cy="31.14%" r="0.8"></circle>
+        <circle class="star" cx="40.06%" cy="49.46%" r="1"></circle>
+        <circle class="star" cx="82.39%" cy="36.86%" r="1"></circle>
+        <circle class="star" cx="38.52%" cy="51.49%" r="1"></circle>
+        <circle class="star" cx="52.3%" cy="69%" r="0.6"></circle>
+        <circle class="star" cx="32.2%" cy="98.21%" r="0.7"></circle>
+        <circle class="star" cx="8.5%" cy="21.75%" r="0.9"></circle>
+        <circle class="star" cx="76.75%" cy="16.49%" r="0.6"></circle>
+        <circle class="star" cx="30.74%" cy="99.05%" r="1.1"></circle>
+        <circle class="star" cx="69.42%" cy="71.52%" r="1.4"></circle>
+        <circle class="star" cx="92.5%" cy="57.19%" r="1.1"></circle>
+        <circle class="star" cx="79.55%" cy="90.28%" r="1.3"></circle>
+        <circle class="star" cx="16.65%" cy="84.92%" r="1"></circle>
+        <circle class="star" cx="90.45%" cy="95%" r="1.2"></circle>
+        <circle class="star" cx="44.58%" cy="27%" r="0.7"></circle>
+        <circle class="star" cx="81.72%" cy="22.28%" r="1.5"></circle>
+        <circle class="star" cx="23.03%" cy="54.42%" r="0.9"></circle>
+        <circle class="star" cx="17.63%" cy="20.01%" r="0.8"></circle>
+        <circle class="star" cx="60.14%" cy="85.29%" r="1"></circle>
+        <circle class="star" cx="56.2%" cy="18.06%" r="0.9"></circle>
+        <circle class="star" cx="8.64%" cy="60.94%" r="1.2"></circle>
+        <circle class="star" cx="90.99%" cy="13.06%" r="0.5"></circle>
+        <circle class="star" cx="96.45%" cy="40.79%" r="1.4"></circle>
+        <circle class="star" cx="75.36%" cy="58.63%" r="1.5"></circle>
+        <circle class="star" cx="74.81%" cy="34.28%" r="1.2"></circle>
+        <circle class="star" cx="12.17%" cy="97.07%" r="1.1"></circle>
+        <circle class="star" cx="57.65%" cy="17.42%" r="1.3"></circle>
+        <circle class="star" cx="31%" cy="46.83%" r="0.8"></circle>
+        <circle class="star" cx="13.25%" cy="36.1%" r="1.2"></circle>
+        <circle class="star" cx="29.58%" cy="16.62%" r="1.3"></circle>
+        <circle class="star" cx="12.78%" cy="27.43%" r="0.9"></circle>
+        <circle class="star" cx="46.67%" cy="21.99%" r="1.2"></circle>
+        <circle class="star" cx="51.36%" cy="75.89%" r="0.7"></circle>
+        <circle class="star" cx="19.81%" cy="16.15%" r="0.8"></circle>
+        <circle class="star" cx="52.79%" cy="42.31%" r="1.5"></circle>
+        <circle class="star" cx="17.14%" cy="2.38%" r="0.6"></circle>
+        <circle class="star" cx="11.13%" cy="43.89%" r="0.8"></circle>
+        <circle class="star" cx="4.26%" cy="58.02%" r="1.4"></circle>
+        <circle class="star" cx="99.13%" cy="52.13%" r="1.5"></circle>
+        <circle class="star" cx="63.14%" cy="65.51%" r="1.1"></circle>
+        <circle class="star" cx="0.68%" cy="12.62%" r="0.5"></circle>
+        <circle class="star" cx="78.31%" cy="90.43%" r="0.8"></circle>
+        <circle class="star" cx="3.35%" cy="9.86%" r="0.8"></circle>
+        <circle class="star" cx="71.01%" cy="25.3%" r="0.7"></circle>
+        <circle class="star" cx="87.42%" cy="21.84%" r="1.4"></circle>
+        <circle class="star" cx="38.6%" cy="36.82%" r="1.4"></circle>
+        <circle class="star" cx="57.32%" cy="5.76%" r="1.1"></circle>
+        <circle class="star" cx="37%" cy="95.45%" r="0.7"></circle>
+        <circle class="star" cx="5.96%" cy="45.66%" r="1.5"></circle>
+        <circle class="star" cx="12.04%" cy="71.76%" r="1.5"></circle>
+        <circle class="star" cx="6.05%" cy="22.22%" r="1"></circle>
+        <circle class="star" cx="35.42%" cy="94.2%" r="1.5"></circle>
+        <circle class="star" cx="27.77%" cy="36.14%" r="0.8"></circle>
+        <circle class="star" cx="66.09%" cy="43.44%" r="1.5"></circle>
+        <circle class="star" cx="71.08%" cy="16.52%" r="0.8"></circle>
+        <circle class="star" cx="5.49%" cy="88.98%" r="0.6"></circle>
+        <circle class="star" cx="30.66%" cy="72.48%" r="0.8"></circle>
+        <circle class="star" cx="41.33%" cy="32.78%" r="1.3"></circle>
+        <circle class="star" cx="10.25%" cy="73.84%" r="1"></circle>
+        <circle class="star" cx="8.73%" cy="8.64%" r="1.5"></circle>
+        <circle class="star" cx="26.87%" cy="16.78%" r="1.2"></circle>
+        <circle class="star" cx="77.51%" cy="75.04%" r="1.4"></circle>
+        <circle class="star" cx="50.82%" cy="40.5%" r="0.8"></circle>
+        <circle class="star" cx="23.15%" cy="34.1%" r="0.5"></circle>
+        <circle class="star" cx="45.42%" cy="34.4%" r="1.2"></circle>
+        <circle class="star" cx="16.39%" cy="57.19%" r="0.6"></circle>
+        <circle class="star" cx="1.48%" cy="27.26%" r="1.2"></circle>
+        <circle class="star" cx="7.1%" cy="83.2%" r="1"></circle>
+        <circle class="star" cx="58.11%" cy="26.76%" r="0.8"></circle>
+        <circle class="star" cx="37.79%" cy="92.75%" r="1.3"></circle>
+        <circle class="star" cx="89.81%" cy="90.9%" r="0.6"></circle>
+        <circle class="star" cx="20.95%" cy="97.09%" r="0.9"></circle>
+        <circle class="star" cx="58.31%" cy="25.84%" r="0.6"></circle>
+        <circle class="star" cx="94.58%" cy="90.46%" r="0.7"></circle>
+        <circle class="star" cx="25.09%" cy="25.21%" r="1.2"></circle>
+        <circle class="star" cx="48.12%" cy="42.54%" r="1"></circle>
+        <circle class="star" cx="87.83%" cy="48.33%" r="1.2"></circle>
+        <circle class="star" cx="78.13%" cy="95.73%" r="1"></circle>
+        <circle class="star" cx="94.5%" cy="58.84%" r="1"></circle>
+        <circle class="star" cx="80.83%" cy="45.54%" r="0.5"></circle>
+        <circle class="star" cx="18.12%" cy="30.59%" r="0.8"></circle>
+        <circle class="star" cx="77.14%" cy="75.76%" r="1.4"></circle>
+        <circle class="star" cx="30.32%" cy="55.83%" r="0.5"></circle>
+        <circle class="star" cx="75.25%" cy="95.44%" r="1"></circle>
+        <circle class="star" cx="50.27%" cy="98.87%" r="1.1"></circle>
+        <circle class="star" cx="82.41%" cy="48.26%" r="0.8"></circle>
+        <circle class="star" cx="84.51%" cy="22.68%" r="1.2"></circle>
+        <circle class="star" cx="64.61%" cy="7.93%" r="1"></circle>
+        <circle class="star" cx="16.93%" cy="11.88%" r="0.8"></circle>
+        <circle class="star" cx="41.08%" cy="15.44%" r="1"></circle>
+        <circle class="star" cx="39.23%" cy="36.29%" r="1.4"></circle>
+        <circle class="star" cx="41.21%" cy="65.41%" r="1.4"></circle>
+        <circle class="star" cx="42.99%" cy="16.32%" r="0.9"></circle>
+        <circle class="star" cx="96.57%" cy="77.94%" r="1.3"></circle>
+        <circle class="star" cx="28.96%" cy="98.49%" r="0.6"></circle>
+        <circle class="star" cx="98.79%" cy="60.61%" r="0.8"></circle>
+        <circle class="star" cx="8.95%" cy="38.97%" r="0.9"></circle>
+        <circle class="star" cx="80.45%" cy="7.7%" r="1.5"></circle>
+        <circle class="star" cx="41.07%" cy="99.89%" r="0.9"></circle>
+        <circle class="star" cx="91.07%" cy="86.53%" r="1.4"></circle>
+        <circle class="star" cx="9.09%" cy="7.71%" r="0.7"></circle>
+        <circle class="star" cx="7.46%" cy="19.32%" r="1.3"></circle>
+        <circle class="star" cx="96.81%" cy="42.71%" r="1.2"></circle>
+        <circle class="star" cx="83.33%" cy="65.29%" r="1.2"></circle>
+        <circle class="star" cx="57.87%" cy="99.48%" r="0.9"></circle>
+        <circle class="star" cx="91.4%" cy="96.39%" r="1.4"></circle>
+        <circle class="star" cx="7.76%" cy="0.91%" r="0.6"></circle>
+        <circle class="star" cx="52.21%" cy="41.44%" r="1.2"></circle>
+        <circle class="star" cx="0.63%" cy="3.91%" r="0.5"></circle>
+        <circle class="star" cx="91.42%" cy="36.4%" r="0.9"></circle>
+        <circle class="star" cx="86.27%" cy="42%" r="0.5"></circle>
+        <circle class="star" cx="95.76%" cy="27.95%" r="1.1"></circle>
+        <circle class="star" cx="54.8%" cy="20.49%" r="1.4"></circle>
+        <circle class="star" cx="74.42%" cy="1.73%" r="0.8"></circle>
+        <circle class="star" cx="73.79%" cy="64%" r="0.7"></circle>
+        <circle class="star" cx="92.82%" cy="55.14%" r="1.2"></circle>
+        <circle class="star" cx="37.7%" cy="81.37%" r="0.8"></circle>
+        <circle class="star" cx="17.49%" cy="53.27%" r="1.3"></circle>
+        <circle class="star" cx="77.84%" cy="41.41%" r="1.3"></circle>
+        <circle class="star" cx="60.95%" cy="12.14%" r="1.3"></circle>
+        <circle class="star" cx="52.16%" cy="68.02%" r="1.3"></circle>
+        <circle class="star" cx="2.96%" cy="1.93%" r="0.6"></circle>
+        <circle class="star" cx="78.68%" cy="19.92%" r="1.1"></circle>
+        <circle class="star" cx="51.5%" cy="87.97%" r="1.3"></circle>
+        <circle class="star" cx="76.53%" cy="68.93%" r="1.3"></circle>
+        <circle class="star" cx="41.9%" cy="25.42%" r="1.4"></circle>
+        <circle class="star" cx="58.36%" cy="66.9%" r="1.1"></circle>
+        <circle class="star" cx="39.18%" cy="97.21%" r="0.8"></circle>
+        <circle class="star" cx="35.61%" cy="8.12%" r="1.3"></circle>
+        <circle class="star" cx="65.06%" cy="83.14%" r="0.7"></circle>
+        <circle class="star" cx="22.12%" cy="73.31%" r="0.9"></circle>
+        <circle class="star" cx="78.64%" cy="89.17%" r="0.7"></circle>
+        <circle class="star" cx="46.7%" cy="13.92%" r="0.9"></circle>
+        <circle class="star" cx="89.66%" cy="34.34%" r="1.2"></circle>
+        <circle class="star" cx="28.04%" cy="84.81%" r="0.8"></circle>
+        <circle class="star" cx="44.39%" cy="20.82%" r="1"></circle>
+        <circle class="star" cx="45.81%" cy="92.09%" r="0.5"></circle>
+        <circle class="star" cx="46.9%" cy="40.01%" r="0.5"></circle>
+        <circle class="star" cx="97.83%" cy="33.01%" r="0.5"></circle>
+        <circle class="star" cx="74.81%" cy="13.75%" r="0.7"></circle>
+        <circle class="star" cx="93.89%" cy="1.39%" r="0.8"></circle>
+        <circle class="star" cx="36.48%" cy="73.35%" r="0.8"></circle>
+        <circle class="star" cx="4.82%" cy="58.1%" r="1.2"></circle>
+        <circle class="star" cx="69.93%" cy="85.65%" r="1.5"></circle>
+        <circle class="star" cx="67.95%" cy="18.72%" r="1.5"></circle>
+        <circle class="star" cx="4.83%" cy="89.51%" r="0.9"></circle>
+        <circle class="star" cx="19.08%" cy="57.57%" r="1.2"></circle>
+        <circle class="star" cx="74.37%" cy="5.35%" r="1"></circle>
+        <circle class="star" cx="54.8%" cy="17.69%" r="1.5"></circle>
+        <circle class="star" cx="83.3%" cy="24.81%" r="0.9"></circle>
+        <circle class="star" cx="46.05%" cy="40.53%" r="0.9"></circle>
+        <circle class="star" cx="19.18%" cy="38.41%" r="1.3"></circle>
+        <circle class="star" cx="61.81%" cy="73.19%" r="1.3"></circle>
+        <circle class="star" cx="73.33%" cy="73.23%" r="0.8"></circle>
+        <circle class="star" cx="98.03%" cy="83.76%" r="0.5"></circle>
+        <circle class="star" cx="33.57%" cy="95.35%" r="1.2"></circle>
+        <circle class="star" cx="0.75%" cy="70.54%" r="0.7"></circle>
+        <circle class="star" cx="93.75%" cy="83.41%" r="0.8"></circle>
+        <circle class="star" cx="16.15%" cy="41.6%" r="0.7"></circle>
+        <circle class="star" cx="73.67%" cy="56.9%" r="0.7"></circle>
+        <circle class="star" cx="84.29%" cy="33.48%" r="0.9"></circle>
+        <circle class="star" cx="27.93%" cy="36.72%" r="0.6"></circle>
+        <circle class="star" cx="30.6%" cy="83.8%" r="0.9"></circle>
+        <circle class="star" cx="7.85%" cy="15.97%" r="1.4"></circle>
+        <circle class="star" cx="49.08%" cy="33.29%" r="0.8"></circle>
+        <circle class="star" cx="15.12%" cy="81.87%" r="1"></circle>
+        <circle class="star" cx="68.05%" cy="87.9%" r="1.3"></circle>
+        <circle class="star" cx="49.1%" cy="95.93%" r="1.5"></circle>
+    </svg>
+    <svg class="stars" width="100%" height="100%" preserveAspectRatio="none">
+        <circle class="star" cx="1.76%" cy="65.6%" r="0.7"></circle>
+        <circle class="star" cx="76.03%" cy="3.22%" r="1.2"></circle>
+        <circle class="star" cx="15.76%" cy="19.88%" r="1"></circle>
+        <circle class="star" cx="11.52%" cy="81.49%" r="1.2"></circle>
+        <circle class="star" cx="97.89%" cy="37.58%" r="1.5"></circle>
+        <circle class="star" cx="10.83%" cy="19.94%" r="1.4"></circle>
+        <circle class="star" cx="88.53%" cy="9.28%" r="1.4"></circle>
+        <circle class="star" cx="14.13%" cy="2.25%" r="1.3"></circle>
+        <circle class="star" cx="42.56%" cy="58.76%" r="1"></circle>
+        <circle class="star" cx="87.97%" cy="68.5%" r="0.8"></circle>
+        <circle class="star" cx="14.9%" cy="97.38%" r="0.7"></circle>
+        <circle class="star" cx="28.82%" cy="45.97%" r="1.3"></circle>
+        <circle class="star" cx="34.8%" cy="34.7%" r="1.2"></circle>
+        <circle class="star" cx="28.43%" cy="93.23%" r="0.7"></circle>
+        <circle class="star" cx="25.75%" cy="10.44%" r="0.8"></circle>
+        <circle class="star" cx="43.8%" cy="42.3%" r="0.6"></circle>
+        <circle class="star" cx="3.07%" cy="48.18%" r="1.4"></circle>
+        <circle class="star" cx="92.73%" cy="27.73%" r="1.2"></circle>
+        <circle class="star" cx="51.17%" cy="63.07%" r="0.6"></circle>
+        <circle class="star" cx="2.62%" cy="87.31%" r="0.8"></circle>
+        <circle class="star" cx="1.72%" cy="19.56%" r="1"></circle>
+        <circle class="star" cx="1.92%" cy="92.16%" r="1.2"></circle>
+        <circle class="star" cx="60.84%" cy="42.47%" r="1"></circle>
+        <circle class="star" cx="13.23%" cy="76.13%" r="1"></circle>
+        <circle class="star" cx="45.42%" cy="12.77%" r="0.7"></circle>
+        <circle class="star" cx="75.73%" cy="20.09%" r="1"></circle>
+        <circle class="star" cx="63.44%" cy="27.87%" r="1.4"></circle>
+        <circle class="star" cx="59.75%" cy="8.07%" r="1.1"></circle>
+        <circle class="star" cx="57.25%" cy="99.14%" r="0.8"></circle>
+        <circle class="star" cx="2.73%" cy="55.12%" r="1.2"></circle>
+        <circle class="star" cx="35.53%" cy="12.82%" r="1.5"></circle>
+        <circle class="star" cx="20.4%" cy="72.72%" r="1.4"></circle>
+        <circle class="star" cx="84.85%" cy="74.42%" r="1.4"></circle>
+        <circle class="star" cx="62.44%" cy="17.04%" r="0.8"></circle>
+        <circle class="star" cx="59.08%" cy="86.99%" r="0.7"></circle>
+        <circle class="star" cx="64.35%" cy="7.62%" r="1.4"></circle>
+        <circle class="star" cx="70.72%" cy="55.86%" r="0.6"></circle>
+        <circle class="star" cx="10.78%" cy="90.99%" r="1.3"></circle>
+        <circle class="star" cx="19.52%" cy="99.4%" r="0.9"></circle>
+        <circle class="star" cx="46.83%" cy="76.86%" r="1.1"></circle>
+        <circle class="star" cx="49.98%" cy="88.45%" r="0.7"></circle>
+        <circle class="star" cx="77.88%" cy="1.85%" r="1.3"></circle>
+        <circle class="star" cx="0.81%" cy="84.71%" r="1.2"></circle>
+        <circle class="star" cx="45.25%" cy="28.94%" r="1.4"></circle>
+        <circle class="star" cx="29.99%" cy="78.03%" r="0.5"></circle>
+        <circle class="star" cx="41.26%" cy="55.66%" r="1.3"></circle>
+        <circle class="star" cx="37.71%" cy="83.11%" r="0.9"></circle>
+        <circle class="star" cx="36.78%" cy="76.57%" r="0.7"></circle>
+        <circle class="star" cx="56.59%" cy="44.62%" r="0.6"></circle>
+        <circle class="star" cx="14.46%" cy="46.66%" r="1.3"></circle>
+        <circle class="star" cx="99.42%" cy="96.77%" r="0.5"></circle>
+        <circle class="star" cx="77.25%" cy="23.47%" r="1"></circle>
+        <circle class="star" cx="38.42%" cy="10.24%" r="1.5"></circle>
+        <circle class="star" cx="15.58%" cy="74.55%" r="0.7"></circle>
+        <circle class="star" cx="84.66%" cy="89.09%" r="1"></circle>
+        <circle class="star" cx="62.43%" cy="36.25%" r="1.3"></circle>
+        <circle class="star" cx="9.83%" cy="73.39%" r="0.6"></circle>
+        <circle class="star" cx="7.8%" cy="13.54%" r="1.2"></circle>
+        <circle class="star" cx="78.92%" cy="35.22%" r="0.6"></circle>
+        <circle class="star" cx="77.84%" cy="59.46%" r="0.7"></circle>
+        <circle class="star" cx="40.85%" cy="19.31%" r="1.4"></circle>
+        <circle class="star" cx="37.16%" cy="6.77%" r="1.1"></circle>
+        <circle class="star" cx="93.4%" cy="62.57%" r="1.4"></circle>
+        <circle class="star" cx="81.51%" cy="69.99%" r="1.4"></circle>
+        <circle class="star" cx="41.16%" cy="75.23%" r="0.5"></circle>
+        <circle class="star" cx="22.65%" cy="86.73%" r="1.4"></circle>
+        <circle class="star" cx="55.2%" cy="45.67%" r="1.1"></circle>
+        <circle class="star" cx="10.58%" cy="35.65%" r="0.6"></circle>
+        <circle class="star" cx="71%" cy="42.62%" r="1.2"></circle>
+        <circle class="star" cx="34.71%" cy="84.19%" r="0.6"></circle>
+        <circle class="star" cx="28.7%" cy="79.08%" r="0.7"></circle>
+        <circle class="star" cx="55.52%" cy="14.41%" r="0.9"></circle>
+        <circle class="star" cx="62.17%" cy="78.55%" r="1.4"></circle>
+        <circle class="star" cx="66.81%" cy="20.12%" r="0.7"></circle>
+        <circle class="star" cx="70.82%" cy="53.51%" r="1.4"></circle>
+        <circle class="star" cx="85.61%" cy="3.81%" r="1.3"></circle>
+        <circle class="star" cx="30.58%" cy="45.18%" r="1"></circle>
+        <circle class="star" cx="75.26%" cy="78.88%" r="0.9"></circle>
+        <circle class="star" cx="10.63%" cy="92.11%" r="1.1"></circle>
+        <circle class="star" cx="58.71%" cy="19.79%" r="1.3"></circle>
+        <circle class="star" cx="46.46%" cy="41.37%" r="1.3"></circle>
+        <circle class="star" cx="76.97%" cy="90.78%" r="0.7"></circle>
+        <circle class="star" cx="92.33%" cy="20.72%" r="1.1"></circle>
+        <circle class="star" cx="86.21%" cy="49.22%" r="1.5"></circle>
+        <circle class="star" cx="58.52%" cy="96.7%" r="0.8"></circle>
+        <circle class="star" cx="85.86%" cy="54.64%" r="1.3"></circle>
+        <circle class="star" cx="71.26%" cy="66%" r="0.9"></circle>
+        <circle class="star" cx="17.32%" cy="25.94%" r="1.4"></circle>
+        <circle class="star" cx="30.18%" cy="8.58%" r="0.7"></circle>
+        <circle class="star" cx="25.62%" cy="22.24%" r="0.9"></circle>
+        <circle class="star" cx="19.74%" cy="10.06%" r="0.9"></circle>
+        <circle class="star" cx="52.67%" cy="87.75%" r="1.1"></circle>
+        <circle class="star" cx="99.83%" cy="95.92%" r="1.5"></circle>
+        <circle class="star" cx="38.9%" cy="35.67%" r="1.4"></circle>
+        <circle class="star" cx="84.1%" cy="72.16%" r="1.1"></circle>
+        <circle class="star" cx="81.23%" cy="71.68%" r="1.1"></circle>
+        <circle class="star" cx="89.12%" cy="52.48%" r="1"></circle>
+        <circle class="star" cx="64.12%" cy="95.68%" r="0.8"></circle>
+        <circle class="star" cx="27.3%" cy="78.29%" r="1"></circle>
+        <circle class="star" cx="30.73%" cy="24.44%" r="0.6"></circle>
+        <circle class="star" cx="1.04%" cy="12.21%" r="1.4"></circle>
+        <circle class="star" cx="57.57%" cy="85.03%" r="1.5"></circle>
+        <circle class="star" cx="32.41%" cy="37.9%" r="0.9"></circle>
+        <circle class="star" cx="64.66%" cy="4.35%" r="1.1"></circle>
+        <circle class="star" cx="74.11%" cy="1.24%" r="0.8"></circle>
+        <circle class="star" cx="49.33%" cy="10.98%" r="1.5"></circle>
+        <circle class="star" cx="22.28%" cy="59.25%" r="1.3"></circle>
+        <circle class="star" cx="18.11%" cy="40.62%" r="0.9"></circle>
+        <circle class="star" cx="48.36%" cy="3.17%" r="1.1"></circle>
+        <circle class="star" cx="16.43%" cy="5.15%" r="1.4"></circle>
+        <circle class="star" cx="67.93%" cy="72.86%" r="1"></circle>
+        <circle class="star" cx="94.31%" cy="67.66%" r="0.7"></circle>
+        <circle class="star" cx="18.38%" cy="25.92%" r="1.5"></circle>
+        <circle class="star" cx="17.57%" cy="55.11%" r="0.6"></circle>
+        <circle class="star" cx="78.7%" cy="85.38%" r="0.7"></circle>
+        <circle class="star" cx="36.72%" cy="9.69%" r="0.9"></circle>
+        <circle class="star" cx="46.07%" cy="15.44%" r="1.5"></circle>
+        <circle class="star" cx="6.57%" cy="84.77%" r="1.5"></circle>
+        <circle class="star" cx="99.24%" cy="12.19%" r="1.4"></circle>
+        <circle class="star" cx="35.69%" cy="17.87%" r="1.2"></circle>
+        <circle class="star" cx="64.92%" cy="58.88%" r="0.5"></circle>
+        <circle class="star" cx="20.08%" cy="5.97%" r="0.8"></circle>
+        <circle class="star" cx="15.25%" cy="96.54%" r="0.8"></circle>
+        <circle class="star" cx="10.55%" cy="64.81%" r="1.1"></circle>
+        <circle class="star" cx="10.4%" cy="19.64%" r="0.8"></circle>
+        <circle class="star" cx="45.17%" cy="74.76%" r="1.2"></circle>
+        <circle class="star" cx="30.14%" cy="72.82%" r="0.5"></circle>
+        <circle class="star" cx="34.29%" cy="44.94%" r="1"></circle>
+        <circle class="star" cx="56.7%" cy="94.33%" r="0.8"></circle>
+        <circle class="star" cx="1.34%" cy="30.5%" r="1.2"></circle>
+        <circle class="star" cx="19%" cy="97.47%" r="1.1"></circle>
+        <circle class="star" cx="72.79%" cy="37.29%" r="0.9"></circle>
+        <circle class="star" cx="27.26%" cy="85.76%" r="1.5"></circle>
+        <circle class="star" cx="26.08%" cy="57.1%" r="1.1"></circle>
+        <circle class="star" cx="51.09%" cy="84.76%" r="1.4"></circle>
+        <circle class="star" cx="58.03%" cy="87.14%" r="0.9"></circle>
+        <circle class="star" cx="65.08%" cy="17.07%" r="0.5"></circle>
+        <circle class="star" cx="22.66%" cy="17.95%" r="0.9"></circle>
+        <circle class="star" cx="19.28%" cy="56.59%" r="1.5"></circle>
+        <circle class="star" cx="91.48%" cy="77.96%" r="1"></circle>
+        <circle class="star" cx="24.54%" cy="86.95%" r="1.1"></circle>
+        <circle class="star" cx="82.69%" cy="1.03%" r="1"></circle>
+        <circle class="star" cx="60.7%" cy="82.58%" r="1.2"></circle>
+        <circle class="star" cx="11.81%" cy="81.19%" r="1.4"></circle>
+        <circle class="star" cx="33.39%" cy="88.95%" r="1.4"></circle>
+        <circle class="star" cx="51.71%" cy="99.84%" r="1"></circle>
+        <circle class="star" cx="8.22%" cy="74.99%" r="1.4"></circle>
+        <circle class="star" cx="36.85%" cy="85.49%" r="1"></circle>
+        <circle class="star" cx="91.46%" cy="67.17%" r="1.2"></circle>
+        <circle class="star" cx="7.17%" cy="19.67%" r="0.6"></circle>
+        <circle class="star" cx="55.34%" cy="77.83%" r="0.5"></circle>
+        <circle class="star" cx="42.36%" cy="9.83%" r="0.8"></circle>
+        <circle class="star" cx="42.92%" cy="11.21%" r="1.1"></circle>
+        <circle class="star" cx="23.17%" cy="5.89%" r="1.3"></circle>
+        <circle class="star" cx="87.24%" cy="71.16%" r="0.8"></circle>
+        <circle class="star" cx="92.81%" cy="24.56%" r="0.8"></circle>
+        <circle class="star" cx="11.89%" cy="41.43%" r="1.4"></circle>
+        <circle class="star" cx="33.16%" cy="40.23%" r="1.3"></circle>
+        <circle class="star" cx="60.12%" cy="99.34%" r="0.8"></circle>
+        <circle class="star" cx="3.93%" cy="2.55%" r="1.4"></circle>
+        <circle class="star" cx="49.58%" cy="68.15%" r="1.2"></circle>
+        <circle class="star" cx="23.27%" cy="57.64%" r="0.5"></circle>
+        <circle class="star" cx="59.35%" cy="89.69%" r="0.8"></circle>
+        <circle class="star" cx="72.48%" cy="25.74%" r="0.9"></circle>
+        <circle class="star" cx="88.39%" cy="53.49%" r="1.1"></circle>
+        <circle class="star" cx="97.82%" cy="2.21%" r="0.8"></circle>
+        <circle class="star" cx="18.01%" cy="44.76%" r="1.4"></circle>
+        <circle class="star" cx="40.6%" cy="45.82%" r="1.1"></circle>
+        <circle class="star" cx="27.65%" cy="74.52%" r="0.7"></circle>
+        <circle class="star" cx="12.38%" cy="57.95%" r="1.3"></circle>
+        <circle class="star" cx="24.98%" cy="81.89%" r="0.6"></circle>
+        <circle class="star" cx="50.86%" cy="28.79%" r="0.8"></circle>
+        <circle class="star" cx="86.56%" cy="72.86%" r="0.7"></circle>
+        <circle class="star" cx="85.01%" cy="66.15%" r="1.3"></circle>
+        <circle class="star" cx="93.4%" cy="35.03%" r="0.7"></circle>
+        <circle class="star" cx="16.08%" cy="13.35%" r="0.6"></circle>
+        <circle class="star" cx="3.73%" cy="35.56%" r="0.9"></circle>
+        <circle class="star" cx="65.83%" cy="18.61%" r="1.4"></circle>
+        <circle class="star" cx="38.15%" cy="10.2%" r="1.5"></circle>
+        <circle class="star" cx="71.58%" cy="1.41%" r="0.5"></circle>
+        <circle class="star" cx="98.15%" cy="41.52%" r="1.1"></circle>
+        <circle class="star" cx="55.93%" cy="59.13%" r="1.1"></circle>
+        <circle class="star" cx="88.67%" cy="29.11%" r="1"></circle>
+        <circle class="star" cx="32.71%" cy="64.48%" r="0.8"></circle>
+        <circle class="star" cx="81.17%" cy="14.87%" r="1.4"></circle>
+        <circle class="star" cx="27.27%" cy="48.45%" r="1.1"></circle>
+        <circle class="star" cx="69.07%" cy="29.92%" r="1.1"></circle>
+        <circle class="star" cx="36.5%" cy="65.6%" r="1"></circle>
+        <circle class="star" cx="29.93%" cy="92.87%" r="1.3"></circle>
+        <circle class="star" cx="49.86%" cy="27.5%" r="1.4"></circle>
+        <circle class="star" cx="68.74%" cy="86.64%" r="1.1"></circle>
+        <circle class="star" cx="39.61%" cy="20.31%" r="1.4"></circle>
+        <circle class="star" cx="50.94%" cy="15.11%" r="1.2"></circle>
+        <circle class="star" cx="25.99%" cy="99.39%" r="0.8"></circle>
+        <circle class="star" cx="11.28%" cy="5.1%" r="0.9"></circle>
+        <circle class="star" cx="31.88%" cy="26.59%" r="0.9"></circle>
+        <circle class="star" cx="8.93%" cy="17.71%" r="1.4"></circle>
+        <circle class="star" cx="92.69%" cy="9.79%" r="1.2"></circle>
+        <circle class="star" cx="42.11%" cy="63.76%" r="0.8"></circle>
+        <circle class="star" cx="3.38%" cy="77.89%" r="1.4"></circle>
+    </svg>
+    <svg class="stars" width="100%" height="100%" preserveAspectRatio="none">
+        <circle class="star" cx="41.76%" cy="9.31%" r="0.9"></circle>
+        <circle class="star" cx="46.07%" cy="81.83%" r="1"></circle>
+        <circle class="star" cx="82.21%" cy="66.15%" r="1.2"></circle>
+        <circle class="star" cx="55.7%" cy="19.09%" r="0.7"></circle>
+        <circle class="star" cx="61.42%" cy="79.69%" r="1.1"></circle>
+        <circle class="star" cx="97.26%" cy="39.42%" r="1.5"></circle>
+        <circle class="star" cx="22.4%" cy="4.08%" r="0.9"></circle>
+        <circle class="star" cx="88.63%" cy="79.89%" r="1.4"></circle>
+        <circle class="star" cx="20.47%" cy="10.52%" r="0.6"></circle>
+        <circle class="star" cx="66.99%" cy="4.6%" r="1"></circle>
+        <circle class="star" cx="21.15%" cy="56.84%" r="1"></circle>
+        <circle class="star" cx="72.61%" cy="83.01%" r="1"></circle>
+        <circle class="star" cx="56.78%" cy="74.33%" r="1.1"></circle>
+        <circle class="star" cx="12.51%" cy="84.55%" r="1.3"></circle>
+        <circle class="star" cx="20.58%" cy="64.93%" r="0.7"></circle>
+        <circle class="star" cx="74.41%" cy="30.72%" r="1.1"></circle>
+        <circle class="star" cx="33.77%" cy="15.87%" r="1"></circle>
+        <circle class="star" cx="65.32%" cy="23.93%" r="0.6"></circle>
+        <circle class="star" cx="26.5%" cy="75.48%" r="1.1"></circle>
+        <circle class="star" cx="17.18%" cy="49.04%" r="1.4"></circle>
+        <circle class="star" cx="92.31%" cy="69.91%" r="0.7"></circle>
+        <circle class="star" cx="99.14%" cy="41.36%" r="1.4"></circle>
+        <circle class="star" cx="55.81%" cy="10.4%" r="1.1"></circle>
+        <circle class="star" cx="83.52%" cy="10.83%" r="0.9"></circle>
+        <circle class="star" cx="38.48%" cy="38.39%" r="0.7"></circle>
+        <circle class="star" cx="18.76%" cy="13.29%" r="1"></circle>
+        <circle class="star" cx="98.24%" cy="47.71%" r="1.2"></circle>
+        <circle class="star" cx="53.62%" cy="93.22%" r="1"></circle>
+        <circle class="star" cx="29.74%" cy="70.11%" r="0.6"></circle>
+        <circle class="star" cx="66.37%" cy="35.91%" r="0.7"></circle>
+        <circle class="star" cx="47.41%" cy="64.38%" r="1.3"></circle>
+        <circle class="star" cx="6.6%" cy="9.89%" r="0.7"></circle>
+        <circle class="star" cx="25.86%" cy="8.22%" r="1.4"></circle>
+        <circle class="star" cx="89.26%" cy="10.51%" r="0.5"></circle>
+        <circle class="star" cx="68.02%" cy="3.15%" r="0.5"></circle>
+        <circle class="star" cx="64.22%" cy="82.89%" r="0.5"></circle>
+        <circle class="star" cx="93.48%" cy="35.21%" r="1.5"></circle>
+        <circle class="star" cx="82.26%" cy="28.43%" r="0.6"></circle>
+        <circle class="star" cx="42.35%" cy="83.97%" r="1.1"></circle>
+        <circle class="star" cx="98.43%" cy="82.88%" r="0.9"></circle>
+        <circle class="star" cx="58.52%" cy="90.04%" r="1.3"></circle>
+        <circle class="star" cx="45.75%" cy="22.09%" r="1.3"></circle>
+        <circle class="star" cx="99.94%" cy="27.93%" r="0.9"></circle>
+        <circle class="star" cx="67.38%" cy="78.72%" r="1.1"></circle>
+        <circle class="star" cx="1.81%" cy="92.33%" r="1"></circle>
+        <circle class="star" cx="46.3%" cy="46.78%" r="0.9"></circle>
+        <circle class="star" cx="51.52%" cy="40.71%" r="1.2"></circle>
+        <circle class="star" cx="81.69%" cy="57.4%" r="1.3"></circle>
+        <circle class="star" cx="59%" cy="77.63%" r="1.1"></circle>
+        <circle class="star" cx="32.76%" cy="32.83%" r="0.5"></circle>
+        <circle class="star" cx="84.34%" cy="73.63%" r="0.5"></circle>
+        <circle class="star" cx="42.82%" cy="92.03%" r="1.1"></circle>
+        <circle class="star" cx="22.06%" cy="9.55%" r="1.4"></circle>
+        <circle class="star" cx="6.93%" cy="44.2%" r="1.4"></circle>
+        <circle class="star" cx="71.37%" cy="84.29%" r="1.5"></circle>
+        <circle class="star" cx="17%" cy="36.16%" r="0.7"></circle>
+        <circle class="star" cx="62.42%" cy="92.42%" r="1"></circle>
+        <circle class="star" cx="23.68%" cy="70.41%" r="1.4"></circle>
+        <circle class="star" cx="82.01%" cy="21.68%" r="0.6"></circle>
+        <circle class="star" cx="22.29%" cy="86.01%" r="1.3"></circle>
+        <circle class="star" cx="99.93%" cy="96.9%" r="1.4"></circle>
+        <circle class="star" cx="18.06%" cy="12.21%" r="1.3"></circle>
+        <circle class="star" cx="56.57%" cy="64.74%" r="1.3"></circle>
+        <circle class="star" cx="82.3%" cy="63.76%" r="1.5"></circle>
+        <circle class="star" cx="14.44%" cy="80.16%" r="0.9"></circle>
+        <circle class="star" cx="23.29%" cy="80.64%" r="0.9"></circle>
+        <circle class="star" cx="72.01%" cy="44.97%" r="0.6"></circle>
+        <circle class="star" cx="10.11%" cy="67.26%" r="1.2"></circle>
+        <circle class="star" cx="23.9%" cy="93.64%" r="1.4"></circle>
+        <circle class="star" cx="66.9%" cy="2.69%" r="0.9"></circle>
+        <circle class="star" cx="65.25%" cy="87.11%" r="1.1"></circle>
+        <circle class="star" cx="79.38%" cy="41.62%" r="0.7"></circle>
+        <circle class="star" cx="19.28%" cy="0.31%" r="1.2"></circle>
+        <circle class="star" cx="25.91%" cy="59.22%" r="0.5"></circle>
+        <circle class="star" cx="63.84%" cy="48.68%" r="0.9"></circle>
+        <circle class="star" cx="88.37%" cy="50.09%" r="1"></circle>
+        <circle class="star" cx="65.52%" cy="19.67%" r="0.6"></circle>
+        <circle class="star" cx="80.33%" cy="41.63%" r="1.4"></circle>
+        <circle class="star" cx="93.51%" cy="82.65%" r="0.6"></circle>
+        <circle class="star" cx="50.81%" cy="92.44%" r="1.4"></circle>
+        <circle class="star" cx="25.27%" cy="38.43%" r="0.9"></circle>
+        <circle class="star" cx="79.3%" cy="20.5%" r="1"></circle>
+        <circle class="star" cx="70.45%" cy="83.94%" r="0.7"></circle>
+        <circle class="star" cx="5.61%" cy="64.89%" r="0.5"></circle>
+        <circle class="star" cx="17.24%" cy="11.68%" r="0.7"></circle>
+        <circle class="star" cx="37.21%" cy="28.93%" r="1"></circle>
+        <circle class="star" cx="71.46%" cy="63.41%" r="1.4"></circle>
+        <circle class="star" cx="25.03%" cy="11.81%" r="1"></circle>
+        <circle class="star" cx="62.47%" cy="88.11%" r="1.1"></circle>
+        <circle class="star" cx="84.08%" cy="68.23%" r="1.2"></circle>
+        <circle class="star" cx="85.91%" cy="68.57%" r="1"></circle>
+        <circle class="star" cx="12.22%" cy="51.58%" r="1.3"></circle>
+        <circle class="star" cx="72.46%" cy="74.81%" r="0.7"></circle>
+        <circle class="star" cx="31.42%" cy="37.51%" r="1.4"></circle>
+        <circle class="star" cx="78.33%" cy="96.01%" r="1.1"></circle>
+        <circle class="star" cx="59.33%" cy="39.19%" r="0.5"></circle>
+        <circle class="star" cx="31.06%" cy="73.74%" r="1.2"></circle>
+        <circle class="star" cx="70.71%" cy="58.98%" r="1"></circle>
+        <circle class="star" cx="82.82%" cy="11.4%" r="1.1"></circle>
+        <circle class="star" cx="18.27%" cy="15.67%" r="1.4"></circle>
+        <circle class="star" cx="42.66%" cy="29.32%" r="1.3"></circle>
+        <circle class="star" cx="31.88%" cy="79.51%" r="1.5"></circle>
+        <circle class="star" cx="76.64%" cy="58.06%" r="1.3"></circle>
+        <circle class="star" cx="9.83%" cy="25.69%" r="1.3"></circle>
+        <circle class="star" cx="25.87%" cy="28.23%" r="1.2"></circle>
+        <circle class="star" cx="35.94%" cy="80.41%" r="1.3"></circle>
+        <circle class="star" cx="95.85%" cy="21.25%" r="0.7"></circle>
+        <circle class="star" cx="95.35%" cy="74.78%" r="1.1"></circle>
+        <circle class="star" cx="59.37%" cy="58.87%" r="0.9"></circle>
+        <circle class="star" cx="13.41%" cy="76.41%" r="1.1"></circle>
+        <circle class="star" cx="14.9%" cy="19.75%" r="0.9"></circle>
+        <circle class="star" cx="24.6%" cy="89.51%" r="0.6"></circle>
+        <circle class="star" cx="0.21%" cy="60.71%" r="1.4"></circle>
+        <circle class="star" cx="73.24%" cy="49.65%" r="1.3"></circle>
+        <circle class="star" cx="64%" cy="94.28%" r="0.6"></circle>
+        <circle class="star" cx="49.12%" cy="20.14%" r="0.7"></circle>
+        <circle class="star" cx="0.35%" cy="44.77%" r="1.1"></circle>
+        <circle class="star" cx="1.74%" cy="64.91%" r="0.5"></circle>
+        <circle class="star" cx="76%" cy="26.51%" r="0.7"></circle>
+        <circle class="star" cx="11.58%" cy="6.99%" r="1"></circle>
+        <circle class="star" cx="34.41%" cy="42.21%" r="0.6"></circle>
+        <circle class="star" cx="9.84%" cy="65.01%" r="1.2"></circle>
+        <circle class="star" cx="41.79%" cy="6.91%" r="1.2"></circle>
+        <circle class="star" cx="5.14%" cy="28.67%" r="0.6"></circle>
+        <circle class="star" cx="64.37%" cy="21.42%" r="0.5"></circle>
+        <circle class="star" cx="39.26%" cy="34.53%" r="0.6"></circle>
+        <circle class="star" cx="33.16%" cy="27.25%" r="0.8"></circle>
+        <circle class="star" cx="15.7%" cy="88.28%" r="1.1"></circle>
+        <circle class="star" cx="37.81%" cy="66.53%" r="1.2"></circle>
+        <circle class="star" cx="31.16%" cy="1.67%" r="0.9"></circle>
+        <circle class="star" cx="24.46%" cy="99.96%" r="1.4"></circle>
+        <circle class="star" cx="85.47%" cy="17.14%" r="1"></circle>
+        <circle class="star" cx="13.04%" cy="30.39%" r="0.9"></circle>
+        <circle class="star" cx="42.59%" cy="39.04%" r="0.8"></circle>
+        <circle class="star" cx="27.52%" cy="35.16%" r="0.8"></circle>
+        <circle class="star" cx="97.4%" cy="86.93%" r="1.2"></circle>
+        <circle class="star" cx="37.92%" cy="88.56%" r="1.1"></circle>
+        <circle class="star" cx="75.66%" cy="78.57%" r="0.6"></circle>
+        <circle class="star" cx="73.54%" cy="16.17%" r="0.5"></circle>
+        <circle class="star" cx="98.79%" cy="97.05%" r="1.3"></circle>
+        <circle class="star" cx="10.71%" cy="94.91%" r="1"></circle>
+        <circle class="star" cx="43.85%" cy="71.93%" r="1.1"></circle>
+        <circle class="star" cx="20.88%" cy="86.48%" r="1.1"></circle>
+        <circle class="star" cx="19.67%" cy="5.46%" r="0.6"></circle>
+        <circle class="star" cx="8.4%" cy="36.25%" r="1.1"></circle>
+        <circle class="star" cx="11.76%" cy="75.87%" r="0.9"></circle>
+        <circle class="star" cx="71.35%" cy="76.95%" r="1.3"></circle>
+        <circle class="star" cx="72.07%" cy="83.36%" r="0.9"></circle>
+        <circle class="star" cx="18.46%" cy="6.04%" r="1.2"></circle>
+        <circle class="star" cx="35.54%" cy="80.87%" r="0.6"></circle>
+        <circle class="star" cx="73.24%" cy="55.94%" r="0.6"></circle>
+        <circle class="star" cx="72.76%" cy="53.4%" r="1.1"></circle>
+        <circle class="star" cx="13.85%" cy="66.21%" r="1.3"></circle>
+        <circle class="star" cx="9.27%" cy="12.95%" r="1.3"></circle>
+        <circle class="star" cx="67.19%" cy="93.15%" r="1.5"></circle>
+        <circle class="star" cx="46.94%" cy="82.8%" r="1"></circle>
+        <circle class="star" cx="26.51%" cy="79.17%" r="0.8"></circle>
+        <circle class="star" cx="78.51%" cy="49.86%" r="1.3"></circle>
+        <circle class="star" cx="53.73%" cy="22.48%" r="0.9"></circle>
+        <circle class="star" cx="5.71%" cy="54.2%" r="1.3"></circle>
+        <circle class="star" cx="38.59%" cy="52.04%" r="0.8"></circle>
+        <circle class="star" cx="77.96%" cy="90.52%" r="1.3"></circle>
+        <circle class="star" cx="85.04%" cy="4.37%" r="0.6"></circle>
+        <circle class="star" cx="58.69%" cy="91.57%" r="0.9"></circle>
+        <circle class="star" cx="40.2%" cy="17.68%" r="1.3"></circle>
+        <circle class="star" cx="59.97%" cy="39.25%" r="0.5"></circle>
+        <circle class="star" cx="28.28%" cy="50.88%" r="1.5"></circle>
+        <circle class="star" cx="68.78%" cy="92.92%" r="1.4"></circle>
+        <circle class="star" cx="72.32%" cy="32.75%" r="1.2"></circle>
+        <circle class="star" cx="25.23%" cy="93.67%" r="0.8"></circle>
+        <circle class="star" cx="88.03%" cy="26.77%" r="1.3"></circle>
+        <circle class="star" cx="32.59%" cy="81.95%" r="1"></circle>
+        <circle class="star" cx="85.42%" cy="57.03%" r="1"></circle>
+        <circle class="star" cx="19.38%" cy="14.98%" r="1.3"></circle>
+        <circle class="star" cx="70.59%" cy="38.17%" r="0.9"></circle>
+        <circle class="star" cx="8.77%" cy="95.37%" r="1.5"></circle>
+        <circle class="star" cx="48.07%" cy="83.4%" r="0.9"></circle>
+        <circle class="star" cx="77.08%" cy="71.53%" r="1.2"></circle>
+        <circle class="star" cx="86.42%" cy="10.74%" r="1"></circle>
+        <circle class="star" cx="92.41%" cy="87.1%" r="0.7"></circle>
+        <circle class="star" cx="64.67%" cy="4.85%" r="0.6"></circle>
+        <circle class="star" cx="28.22%" cy="40.38%" r="1.4"></circle>
+        <circle class="star" cx="26.13%" cy="80.6%" r="0.7"></circle>
+        <circle class="star" cx="60.62%" cy="10.03%" r="1"></circle>
+        <circle class="star" cx="41.55%" cy="45.2%" r="1.3"></circle>
+        <circle class="star" cx="28.45%" cy="42.34%" r="0.8"></circle>
+        <circle class="star" cx="47.12%" cy="70.33%" r="0.9"></circle>
+        <circle class="star" cx="63.69%" cy="93.63%" r="0.8"></circle>
+        <circle class="star" cx="66.91%" cy="83.31%" r="1.1"></circle>
+        <circle class="star" cx="58.15%" cy="67.12%" r="1.2"></circle>
+        <circle class="star" cx="48.6%" cy="24.42%" r="1.2"></circle>
+        <circle class="star" cx="84.38%" cy="59.06%" r="0.6"></circle>
+        <circle class="star" cx="82.27%" cy="31.02%" r="1"></circle>
+        <circle class="star" cx="69.46%" cy="62.55%" r="0.6"></circle>
+        <circle class="star" cx="88.27%" cy="41.17%" r="1.3"></circle>
+        <circle class="star" cx="46.07%" cy="24.43%" r="1"></circle>
+        <circle class="star" cx="14.15%" cy="86.16%" r="0.6"></circle>
+        <circle class="star" cx="59.63%" cy="6.66%" r="1"></circle>
+        <circle class="star" cx="49.98%" cy="54.03%" r="1"></circle>
+        <circle class="star" cx="8.43%" cy="34.94%" r="0.5"></circle>
+    </svg>
+    <svg class="extras" width="100%" height="100%" preserveAspectRatio="none">
+        <defs>
+            <radialGradient id="comet-gradient" cx="0" cy=".5" r="0.5">
+                <stop offset="0%" stop-color="rgba(255,255,255,.8)"></stop>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+            </radialGradient>
+        </defs>
+        <g transform="rotate(-135)">
+            <ellipse class="comet comet-a" fill="url(#comet-gradient)" cx="0" cy="0" rx="150" ry="2"></ellipse>
+        </g>
+        <g transform="rotate(20)">
+            <ellipse class="comet comet-b" fill="url(#comet-gradient)" cx="100%" cy="0" rx="150" ry="2"></ellipse>
+        </g>
+        <g transform="rotate(300)">
+            <ellipse class="comet comet-c" fill="url(#comet-gradient)" cx="40%" cy="100%" rx="150" ry="2"></ellipse>
+        </g>
+    </svg>
+    <div class="night-bg"></div>
+</div>
