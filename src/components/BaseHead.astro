@@ -4,6 +4,7 @@ export interface Props {
     description: string;
     image?: string;
 }
+const addGoogleAnalytics = process.env.NODE_ENV === "production";
 
 const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 import "@/styles/global.scss";
@@ -40,3 +41,16 @@ import "@/styles/global.scss";
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Google tag (gtag.js) -->
+{
+    addGoogleAnalytics && (
+        <>
+            <script async type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-MH655H38HT" />
+            <script type="text/partytown">
+                window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); gtag('config', 'G-MH655H38HT');
+            </script>
+        </>
+    )
+}
