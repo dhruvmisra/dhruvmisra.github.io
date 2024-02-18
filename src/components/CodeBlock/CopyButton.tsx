@@ -18,7 +18,7 @@ const CopyButton = ({ text }: CopyButtonProps) => {
 
     return (
         <button
-            class="copy-button p-2 rounded-md border border-slate-500 transition-opacity"
+            class={`copy-button p-2 rounded-md border border-slate-500 transition-opacity ${isCopied ? "copied" : ""}`}
             title="Copy"
             onClick={copy}
         >

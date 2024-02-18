@@ -1,0 +1,190 @@
+.post p {
+    @apply leading-7;
+}
+
+.post h2 {
+    @apply mt-6 text-3xl text-neutral-100;
+}
+
+.post h3 {
+    @apply mt-4 text-xl text-neutral-100;
+}
+
+.post a {
+    @apply text-neutral-100 underline;
+}
+
+.post ul {
+    @apply list-disc;
+}
+
+.post blockquote {
+    @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
+}
+
+.post pre > code {
+    @apply bg-transparent;
+}
+
+/* Code block styles */
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    z-index: 100;
+}
+.copy-button:hover,
+.copy-button.copied {
+    opacity: 1 !important;
+}
+pre:hover .copy-button {
+    opacity: 0.5;
+}
+
+pre,
+.prose pre {
+    position: relative;
+    display: block;
+    /* outline: 1px solid theme("colors.slate.700"); */
+    background-color: theme("colors.slate.900");
+}
+
+pre code {
+    white-space: pre;
+    margin-top: -2.5em;
+    margin-bottom: -1em;
+}
+
+pre code > span {
+    padding: 0 1rem;
+    line-height: 1.5rem;
+}
+
+code,
+.prose code {
+    padding: 0rem;
+}
+
+pre code [data-highlighted-line] {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: hsl(229.09deg 26.83% 12.04%);
+}
+
+pre code [data-highlighted-line]::before {
+    color: theme("colors.gray.500");
+}
+
+pre code [data-highlighted-line]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: hsl(229.09deg 26.83% 32.04%);
+}
+
+/* Code focus styles */
+pre.has-focused code > span:not(.focused) {
+    filter: blur(0.095rem);
+    transition:
+        filter 0.35s,
+        opacity 0.35s;
+    opacity: 0.7;
+}
+pre.has-focused:hover code > span:not(.focused) {
+    filter: blur(0);
+    opacity: 1;
+}
+
+/* Code diff styles */
+pre.has-diff code > span.diff::after {
+    position: absolute;
+    left: 2.5rem;
+}
+pre.has-diff code > span.diff.remove{
+    background-color: rgba(255, 0, 0, 0.1);
+}
+pre.has-diff code > span.diff.remove::after {
+    content: "-";
+    color: theme("colors.red.700");
+}
+pre.has-diff code > span.diff.add {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+pre.has-diff code > span.diff.add::after {
+    content: "+";
+    color: theme("colors.green.700");
+}
+
+pre {
+    box-shadow:
+        rgba(0, 0, 0, 0.15) 0px 32px 32px 0px,
+        rgba(0, 0, 0, 0.15) 0px 16px 16px 0px,
+        rgba(0, 0, 0, 0.15) 0px 8px 8px 0px,
+        rgba(0, 0, 0, 0.15) 0px 4px 4px 0px;
+}
+
+/* Code block title */
+[data-rehype-pretty-code-title] {
+    padding: 6px 12px;
+    margin-bottom: 1px;
+    width: fit-content;
+    font-family: theme("fontFamily.mono");
+    font-size: theme("fontSize.xs");
+    color: theme("colors.gray.50");
+    border-bottom: 2px solid var(--border-color);
+    outline: 1px solid theme("colors.slate.700");
+    background-color: theme("colors.slate.800");
+    border-top-left-radius: theme("borderRadius.DEFAULT");
+    border-top-right-radius: theme("borderRadius.DEFAULT");
+
+    --border-color: theme("colors.slate.500");
+}
+[data-rehype-pretty-code-title][data-language="html"] {
+    --border-color: #e34c26;
+}
+[data-rehype-pretty-code-title][data-language="js"] {
+    --border-color: #f0db4f;
+}
+[data-rehype-pretty-code-title][data-language="ts"] {
+    --border-color: #007acc;
+}
+[data-rehype-pretty-code-title][data-language="python"] {
+    --border-color: #0d1c4d;
+}
+[data-rehype-pretty-code-title][data-language="terraform"] {
+    --border-color: #946ced;
+}
+[data-rehype-pretty-code-title][data-language="go"] {
+    --border-color: #3aadd9;
+}
+
+/* Code block line numbers */
+code {
+    counter-reset: line;
+    overflow: auto;
+}
+
+code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    text-align: right;
+    color: gray;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 3rem;
+}
