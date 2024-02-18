@@ -1,3 +1,5 @@
+
+
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
@@ -54,10 +56,10 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "monospace"],
+        "sans-serif": ["Open Sans", "sans-serif"],
       },
 
-      typography: {
+      typography: () => ({
         DEFAULT: {
           css: {
             pre: {
@@ -68,7 +70,7 @@ module.exports = {
             },
           },
         },
-      },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

@@ -12,13 +12,21 @@
     --color-card-muted: 205, 205, 205;
     --color-border: 236, 233, 233;
   }
+  /* html[data-theme="dark"] { */
+  /*   --color-fill: 33, 39, 55; */
+  /*   --color-text-base: 234, 237, 243; */
+  /*   --color-accent: 255, 107, 1; */
+  /*   --color-card: 52, 63, 96; */
+  /*   --color-card-muted: 138, 51, 2; */
+  /*   --color-border: 171, 75, 8; */
+  /* } */
   html[data-theme="dark"] {
-    --color-fill: 33, 39, 55;
+    --color-fill: 0, 1, 20;
+    --color-accent: 97, 123, 255;
     --color-text-base: 234, 237, 243;
-    --color-accent: 255, 107, 1;
-    --color-card: 52, 63, 96;
-    --color-card-muted: 138, 51, 2;
-    --color-border: 171, 75, 8;
+    --color-card: 33, 34, 83;
+    --color-card-muted: 12, 14, 79;
+    --color-border: 48, 63, 138;
   }
   #sun-svg,
   html[data-theme="dark"] #moon-svg {
@@ -29,7 +37,7 @@
     display: block;
   }
   body {
-    @apply flex min-h-[100svh] flex-col bg-skin-fill font-mono text-skin-base 
+    @apply flex min-h-[100svh] flex-col bg-skin-fill font-sans-serif text-skin-base 
     selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
   }
   section,
@@ -41,7 +49,7 @@
     focus-visible:no-underline focus-visible:outline-dashed;
   }
   svg {
-    @apply inline-block h-6 w-6 fill-skin-base group-hover:fill-skin-accent;
+    @apply inline-block h-6 w-6;
   }
   svg.icon-tabler {
     @apply inline-block h-6 w-6 scale-125 fill-transparent 
@@ -56,7 +64,6 @@
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
     prose-figcaption:!text-skin-base prose-figcaption:opacity-70
     prose-strong:!text-skin-base
-
     
     prose-code:rounded prose-code:bg-skin-card 
     prose-code:bg-opacity-75 prose-code:p-1 
@@ -66,8 +73,8 @@
     prose-table:text-skin-base prose-th:border
     prose-th:border-skin-line prose-td:border 
     prose-td:border-skin-line prose-img:!my-2 
-    prose-img:mx-auto prose-img:border-2 
-    prose-img:border-skin-line prose-hr:!border-skin-line;
+    prose-img:mx-auto prose-img:shadow-xl 
+    prose-hr:!border-skin-line;
   }
   .prose a {
     @apply break-words hover:!text-skin-accent;
@@ -90,31 +97,6 @@
     @apply hidden;
   }
 
-  /* ===== scrollbar ===== */
-  html {
-    overflow-y: scroll;
-  }
-
-  /* width */
-  ::-webkit-scrollbar {
-    @apply w-3;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    @apply bg-skin-fill;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    @apply bg-skin-card;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-skin-card-muted;
-  }
-
   code,
   blockquote {
     word-wrap: break-word;
@@ -122,6 +104,16 @@
 
   pre > code {
     white-space: pre;
+  }
+
+  pre .copy-code {
+    @apply absolute right-2 top-2 rounded bg-skin-card px-2 py-1 text-xs font-mono leading-4 text-skin-base opacity-0 transition-opacity;
+  }
+  pre:hover .copy-code {
+    @apply opacity-50;
+  }
+  pre .copy-code:hover {
+    @apply opacity-100;
   }
 }
 

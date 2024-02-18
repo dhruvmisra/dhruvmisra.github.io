@@ -52,7 +52,7 @@ AstroPaper now includes VSCode snippets for new blog posts, eliminating the need
 
 Read more about VSCode Snippets [here](https://code.visualstudio.com/docs/editor/userdefinedsnippets#:~:text=In%20Visual%20Studio%20Code%2C%20snippets,Snippet%20in%20the%20Command%20Palette).
 
-<video autoplay muted="muted" controls plays-inline="true" class="border border-skin-line">
+<video autoplay muted="muted" controls plays-inline="true">
   <source src="https://github.com/satnaing/astro-paper/assets/53733092/136f1903-bade-40a2-b6bb-285a3c726350" type="video/mp4">
 </video>
 
@@ -74,7 +74,7 @@ Enhance user navigation on your blog detail post with the newly implemented back
 
 Improve content organization and navigation with the addition of pagination in tag posts, making it easier for users to explore related content. This ensures that if a tag has many posts, readers won't be overwhelmed by all the tag-related posts.
 
-<video autoplay loop="loop" muted="muted" plays-inline="true" class="border border-skin-line">
+<video autoplay loop="loop" muted="muted" plays-inline="true">
   <source src="https://github.com/satnaing/astro-paper/assets/53733092/9bad87f5-dcf5-4b79-b67a-d6c7244cd616" type="video/mp4">
 </video>
 

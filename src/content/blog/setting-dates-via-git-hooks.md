@@ -130,7 +130,7 @@ We could use the `a` variable to switch inside the loop and either update the `m
 
 If your IDE supports snippets then there is the option to create a custom snippet to populate the frontmatter.[In AstroPaper v4 will come with one for VSCode by default.](https://github.com/satnaing/astro-paper/pull/206)
 
-<video autoplay muted="muted" controls plays-inline="true" class="border border-skin-line">
+<video autoplay muted="muted" controls plays-inline="true">
   <source src="https://github.com/satnaing/astro-paper/assets/17761689/e13babbc-2d78-405d-8758-ca31915e41b0" type="video/mp4">
 </video>
 

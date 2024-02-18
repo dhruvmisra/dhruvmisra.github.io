@@ -24,7 +24,10 @@ breadcrumbList[0] === "tags" &&
   );
 ---
 
-<nav class="breadcrumb" aria-label="breadcrumb">
+<nav
+  class="breadcrumb mx-auto mb-4 w-full max-w-3xl px-4 text-sm"
+  aria-label="breadcrumb"
+>
   <ul>
     <li>
       <a href="/">Home</a>
@@ -44,7 +47,7 @@ breadcrumbList[0] === "tags" &&
           </li>
         ) : (
           <li>
-            <a href={`/${breadcrumb}/`}>{breadcrumb}</a>
+            <a href={`/${breadcrumb}`}>{breadcrumb}</a>
             <span aria-hidden="true">&raquo;</span>
           </li>
         )
@@ -54,17 +57,14 @@ breadcrumbList[0] === "tags" &&
 </nav>
 
 <style>
-  .breadcrumb {
-    @apply mx-auto mb-1 mt-8 w-full max-w-3xl px-4;
-  }
   .breadcrumb ul li {
     @apply inline;
   }
   .breadcrumb ul li a {
-    @apply capitalize opacity-70;
+    @apply capitalize opacity-60;
   }
   .breadcrumb ul li span {
-    @apply opacity-70;
+    @apply opacity-60;
   }
   .breadcrumb ul li:not(:last-child) a {
     @apply hover:opacity-100;

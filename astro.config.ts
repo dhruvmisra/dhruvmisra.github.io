@@ -1,35 +1,60 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import react from "@astrojs/react";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
+import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+import preact from "@astrojs/preact";
+import robotsTxt from "astro-robots-txt";
+import remarkToc from "remark-toc";
+import rehypePrettyCode from "rehype-pretty-code";
+import {
+  transformerNotationDiff,
+  transformerNotationFocus,
+} from "shikiji-transformers";
+import { visit } from "unist-util-visit";
 import { SITE } from "./src/config";
 
+const prettyCodeOptions = {
+  // Shiki theme
+  theme: "material-theme-ocean",
+  wrap: false,
+  transformers: [transformerNotationDiff(), transformerNotationFocus()],
+};
+
+const addRawCodeToChildProperties = () => tree => {
+  visit(tree, node => {
+    if (
+      node &&
+      node.type === "element" &&
+      node.tagName === "figure" &&
+      "data-rehype-pretty-code-figure" in node.properties
+    ) {
+      for (const child of node.children) {
+        if (child.tagName === "pre") {
+          child.properties["raw"] = node.raw;
+        }
+      }
+    }
+  });
+};
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
   integrations: [
+    mdx(),
+    preact(),
     tailwind({
       applyBaseStyles: false,
     }),
-    react(),
     sitemap(),
+    robotsTxt(),
   ],
+  site: SITE.website,
   markdown: {
-    remarkPlugins: [
-      remarkToc,
-      [
-        remarkCollapse,
-        {
-          test: "Table of contents",
-        },
-      ],
+    syntaxHighlight: false,
+    remarkPlugins: [remarkToc],
+    rehypePlugins: [
+      [rehypePrettyCode, prettyCodeOptions],
+      addRawCodeToChildProperties,
     ],
-    shikiConfig: {
-      theme: "one-dark-pro",
-      wrap: true,
-    },
   },
   vite: {
     optimizeDeps: {
