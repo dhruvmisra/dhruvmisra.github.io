@@ -1,11 +1,12 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Tag from "@components/Tag.astro";
-import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
-import { slugifyStr } from "@utils/slugify";
-import ShareLinks from "@components/ShareLinks.astro";
 import { SITE } from "@config";
+import Datetime from "@components/Datetime";
+import Tag from "@components/Tag.astro";
+import Layout from "@layouts/Layout.astro";
+import ShareLinks from "@components/ShareLinks.astro";
+import PageProgress from "@components/PageProgress/PageProgress.astro";
+import { slugifyStr } from "@utils/slugify";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -45,19 +46,19 @@ const layoutProps = {
 ---
 
 <Layout {...layoutProps}>
-  <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
-    <button
-      class="focus-outline mb-4 text-xs flex items-center opacity-75 hover:opacity-100"
-      onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-500"
-        ><path
-          d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-        ></path>
-      </svg>
-      <span>BACK</span>
-    </button>
-  </div>
+  <!-- <div class="mx-auto flex w-full max-w-3xl justify-start px-2"> -->
+  <!--   <button -->
+  <!--     class="focus-outline mb-4 text-xs flex items-center opacity-75 hover:opacity-100" -->
+  <!--     onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()" -->
+  <!--   > -->
+  <!--     <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-500" -->
+  <!--       ><path -->
+  <!--         d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" -->
+  <!--       ></path> -->
+  <!--     </svg> -->
+  <!--     <span>BACK</span> -->
+  <!--   </button> -->
+  <!-- </div> -->
   <main id="main-content">
     <h1
       transition:name={slugifyStr(title)}
@@ -100,6 +101,7 @@ const layoutProps = {
 
       <ShareLinks />
     </div>
+    <PageProgress />
   </main>
 </Layout>
 
@@ -113,45 +115,6 @@ const layoutProps = {
 </style>
 
 <script is:inline>
-  /** Create a progress indicator
-   *  at the top */
-  function createProgressBar() {
-    // Create the main container div
-    const progressContainer = document.createElement("div");
-    progressContainer.className =
-      "progress-container fixed top-0 z-10 h-1 w-full bg-skin-fill";
-
-    // Create the progress bar div
-    const progressBar = document.createElement("div");
-    progressBar.className = "progress-bar h-0.5 w-0 bg-skin-accent";
-    progressBar.id = "myBar";
-
-    // Append the progress bar to the progress container
-    progressContainer.appendChild(progressBar);
-
-    // Append the progress container to the document body or any other desired parent element
-    document.body.appendChild(progressContainer);
-  }
-  createProgressBar();
-
-  /** Update the progress bar
-   *  when user scrolls */
-  function updateScrollProgress() {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    if (document) {
-      const myBar = document.getElementById("myBar");
-      if (myBar) {
-        myBar.style.width = scrolled + "%";
-      }
-    }
-  }
-  document.addEventListener("scroll", updateScrollProgress);
-
   /** Attaches links to headings in the document,
    *  allowing sharing of sections easily */
   function addHeadingLinks() {

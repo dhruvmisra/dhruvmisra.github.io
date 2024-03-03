@@ -1,0 +1,69 @@
+---
+import "./page-progress.css";
+---
+
+<div
+  role="button"
+  tabindex={0}
+  class="progress-wrap"
+  id="page-progress-btn"
+  title="Scroll to top"
+>
+  <svg
+    class="progress-circle svg-content"
+    width="100%"
+    height="100%"
+    viewBox="-1 -1 102 102"
+  >
+    <path id="page-progress-path" d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+    ></path>
+  </svg>
+</div>
+
+<script is:inline>
+  function updateProgress(pageProgressButton, pageProgressPath, pathLength) {
+    const TOP_SCROLL_OFFSET = 50;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const totalHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = winScroll / totalHeight;
+
+    const progress = pathLength - pathLength * scrolled;
+    pageProgressPath.style.strokeDashoffset = "" + progress;
+
+    // Update visibility
+    if (winScroll > TOP_SCROLL_OFFSET) {
+      pageProgressButton.classList.add("active-progress");
+    } else {
+      pageProgressButton.classList.remove("active-progress");
+    }
+  }
+
+  function scrollToTop() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
+  function initPageProgress() {
+    let pageProgressButton = document.getElementById("page-progress-btn");
+    let pageProgressPath = document.getElementById("page-progress-path");
+    let pathLength = pageProgressPath.getTotalLength();
+
+    pageProgressPath.style.transition = pageProgressPath.style.transition =
+      "none";
+    pageProgressPath.style.strokeDasharray = pathLength + " " + pathLength;
+    pageProgressPath.style.strokeDashoffset = String(pathLength);
+    pageProgressPath.getBoundingClientRect();
+    pageProgressPath.style.transition = pageProgressPath.style.transition =
+      "stroke-dashoffset 10ms linear";
+
+    updateProgress(pageProgressButton, pageProgressPath, pathLength);
+    document.addEventListener("scroll", () =>
+      updateProgress(pageProgressButton, pageProgressPath, pathLength)
+    );
+    pageProgressButton.addEventListener("click", scrollToTop);
+    pageProgressButton.addEventListener("keydown", scrollToTop);
+  }
+  initPageProgress();
+</script>
