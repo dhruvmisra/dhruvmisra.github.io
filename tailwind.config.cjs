@@ -56,6 +56,8 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
+        fun: ["Bubblegum Sans", "cursive"],
+        serif: ["Playfair Display", "serif"],
         "sans-serif": ["Open Sans", "sans-serif"],
       },
 

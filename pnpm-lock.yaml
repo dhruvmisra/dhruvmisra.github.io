@@ -110,7 +110,7 @@ devDependencies:
     specifier: ^0.12.3
     version: 0.12.6(shikiji@0.9.19)
   sharp:
-    specifier: ^0.33.1
+    specifier: ^0.33.2
     version: 0.33.2
   shikiji-transformers:
     specifier: ^0.9.17

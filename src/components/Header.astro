@@ -9,7 +9,7 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header>
+<header class="z-10">
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
@@ -20,26 +20,24 @@ const { activeNav } = Astro.props;
               width="393.75"
               height="313.75"
               viewBox="-40 -30 393.75 313.75"
-              fill="white"
-              class="logo w-12 h-auto"
+              class="logo fill-skin-base w-12 h-auto"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g id="logo-main">
                 <path
                   id="letter-m"
                   d="M39.7155 19.8589L147.786 168.444L265.732 -3.05176e-05L266 0.187415V0H314V153.687L314.052 153.723L314 153.797V154H313.858L246.393 250.35L245.577 249.779L216.341 209.583L266 138.663V83.3031L148.916 250.516L147.647 249.628L123.51 216.441L123.4 216.521L0.897217 48.0926L39.7155 19.8589Z"
-                  class="fill-primary"
                   fill-opacity="0.20"
                 />
                 <g id="D">
                   <path
                     id="letter-d"
                     d="M96.8354 240.485C81.6697 246.767 65.4152 250 49 250L49 201.875C59.0954 201.875 69.0919 199.887 78.4188 196.023C87.7457 192.16 96.2203 186.497 103.359 179.359C110.497 172.22 116.16 163.746 120.023 154.419C123.887 145.092 125.875 135.095 125.875 125C125.875 114.905 123.887 104.908 120.023 95.5812C116.16 86.2543 110.497 77.7797 103.359 70.6412C96.2203 63.5027 87.7457 57.8401 78.4188 53.9768C69.0919 50.1134 59.0954 48.125 49 48.125L49 48H1V2.07227e-05L49 1.52588e-05C65.4152 1.52588e-05 81.6697 3.23323 96.8354 9.51507C112.001 15.7969 125.781 25.0043 137.388 36.6117C148.996 48.219 158.203 61.9989 164.485 77.1646C170.767 92.3303 174 108.585 174 125C174 141.415 170.767 157.67 164.485 172.835C158.203 188.001 148.996 201.781 137.388 213.388C125.781 224.996 112.001 234.203 96.8354 240.485Z"
-                    class="fill-primary drop-shadow-xl"
+                    class="drop-shadow-xl"
                   />
                   <path
                     id="letter-d-end"
-                    class="fill-primary drop-shadow-xl transition duration-200 ease-in-out"
+                    class="drop-shadow-xl transition duration-200 ease-in-out"
                     d="M1.46241 181.767L49.1505 249.872L88.4698 222.341L30.761 139.924L1.46241 181.767Z"
                   />
                 </g>
@@ -145,7 +143,7 @@ const { activeNav } = Astro.props;
     @apply mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row;
   }
   .top-nav-wrap {
-    @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
+    @apply relative flex w-full items-start justify-between p-4 sm:items-center;
   }
   .logo {
     @apply absolute text-xl font-semibold sm:static sm:text-2xl;
@@ -154,7 +152,7 @@ const { activeNav } = Astro.props;
     transform: translate(-40px, -54px);
   }
   .hamburger-menu {
-    @apply self-end p-4 sm:hidden;
+    @apply self-end sm:hidden;
   }
   .hamburger-menu svg {
     @apply h-6 w-6 scale-125 fill-skin-base;

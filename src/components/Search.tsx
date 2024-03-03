@@ -1,21 +1,14 @@
-import Fuse from "fuse.js";
-import { useEffect, useRef, useState, useMemo } from "preact/hooks";
-import Card from "@components/Card";
 import type { CollectionEntry } from "astro:content";
-
-export type SearchItem = {
-  title: string;
-  description: string;
-  data: CollectionEntry<"blog">["data"];
-  slug: string;
-};
+import { useEffect, useRef, useState, useMemo } from "preact/hooks";
+import Fuse from "fuse.js";
+import CardGrid from "./CardGrid";
 
 interface Props {
-  searchList: SearchItem[];
+  searchList: CollectionEntry<"blog">[];
 }
 
 interface SearchResult {
-  item: SearchItem;
+  item: CollectionEntry<"blog">;
   refIndex: number;
 }
 
@@ -33,7 +26,7 @@ export default function SearchBar({ searchList }: Props) {
   const fuse = useMemo(
     () =>
       new Fuse(searchList, {
-        keys: ["title", "description"],
+        keys: ["data.title", "data.description"],
         includeMatches: true,
         minMatchCharLength: 2,
         threshold: 0.5,
@@ -111,18 +104,7 @@ export default function SearchBar({ searchList }: Props) {
           for '{inputVal}'
         </p>
       )}
-      <ul className="grid gap-4 sm:grid-cols-2">
-        {searchResults &&
-          searchResults.map(({ item, refIndex }) => (
-            <li>
-              <Card
-                href={`/posts/${item.slug}`}
-                frontmatter={item.data}
-                key={`${refIndex}-${item.slug}`}
-              />
-            </li>
-          ))}
-      </ul>
+      {searchResults && <CardGrid posts={searchResults.map(i => i.item)} />}
     </>
   );
 }

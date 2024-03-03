@@ -1,0 +1,16 @@
+---
+type Props = {
+  position: "bottom" | "top";
+};
+
+const { position } = Astro.props;
+---
+
+<div
+  class:list={{
+    [`fixed -z-1 h-[134px] w-[134px] sm:w-[300px] sm:h-[300px] rounded-full bg-skin-accent blur-[150px] as:blur-[350px] opacity-50`]: true,
+    ["left-0 top-0"]: position === "top",
+    ["right-0 bottom-0"]: position === "bottom",
+  }}
+>
+</div>

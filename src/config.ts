@@ -26,38 +26,38 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://github.com/dhruvmisra",
     linkTitle: ` ${SITE.title} on Github`,
     active: true,
   },
   {
     name: "LinkedIn",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.linkedin.com/in/dhruv-misra-35a96a170/",
     linkTitle: `${SITE.title} on LinkedIn`,
     active: true,
   },
   {
+    name: "Twitter",
+    href: "https://twitter.com/dhruvmisra1",
+    linkTitle: `${SITE.title} on Twitter`,
+    active: true,
+  },
+  {
     name: "Instagram",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.instagram.com/dhruvmisra",
     linkTitle: `${SITE.title} on Instagram`,
     active: true,
   },
   {
     name: "Facebook",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.facebook.com/dhruvmisra1",
     linkTitle: `${SITE.title} on Facebook`,
     active: true,
   },
   {
     name: "Mail",
-    href: "mailto:yourmail@gmail.com",
+    href: "mailto:dhruvmisra@live.com",
     linkTitle: `Send an email to ${SITE.title}`,
-    active: true,
-  },
-  {
-    name: "Twitter",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on Twitter`,
     active: true,
   },
   {

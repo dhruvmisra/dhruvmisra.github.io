@@ -1,6 +1,5 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
@@ -47,8 +46,6 @@ const layoutProps = {
 ---
 
 <Layout {...layoutProps}>
-  <Header />
-
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
     <button
       class="focus-outline mb-4 text-xs flex items-center opacity-75 hover:opacity-100"
@@ -63,7 +60,12 @@ const layoutProps = {
     </button>
   </div>
   <main id="main-content">
-    <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
+    <h1
+      transition:name={slugifyStr(title)}
+      class="post-title text-5xl font-semibold sm:text-6xl mt-8"
+    >
+      {title}
+    </h1>
     <Datetime
       pubDatetime={pubDatetime}
       modDatetime={modDatetime}
@@ -73,7 +75,7 @@ const layoutProps = {
     <article
       id="article"
       role="article"
-      class="prose mx-auto mt-8 max-w-3xl text-neutral-500"
+      class="prose sm:prose-lg sm:leading-8 mx-auto mt-8 max-w-3xl text-neutral-500"
     >
       <Content />
     </article>
@@ -108,7 +110,7 @@ const layoutProps = {
     @apply mx-auto w-full max-w-3xl px-4 pb-12;
   }
   .post-title {
-    @apply text-4xl font-semibold sm:text-5xl;
+    @apply text-5xl font-semibold sm:text-6xl;
   }
 </style>
 
