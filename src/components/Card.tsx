@@ -29,7 +29,7 @@ export default function Card({
       <div className="card-border"></div>
       <div className="card-content flex cursor-pointer flex-col gap-2 p-4">
         <div
-          className="flex justify-between text-lg font-medium text-skin-accent 
+          className="flex justify-between text-lg font-medium text-skin-base group-hover:text-skin-accent
           decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
         >
           <h2 {...headerProps}>{title}</h2>
@@ -55,7 +55,7 @@ export default function Card({
           </svg>
         </div>
         <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} />
-        <p className="text-sm text-neutral-500">{description}</p>
+        <p className="text-sm text-neutral-400">{description}</p>
       </div>
     </a>
   );

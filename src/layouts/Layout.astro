@@ -1,9 +1,11 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 import { LOCALE, SITE } from "@config";
 import "@styles/base.css";
 import "@styles/card.css";
+import "@styles/code.css";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -116,7 +118,6 @@ const socialImageURL = new URL(
   <body>
     <Header activeNav={activeNav} />
     <slot />
-
-    <!-- Glow card event listener -->
+    <Footer />
   </body>
 </html>

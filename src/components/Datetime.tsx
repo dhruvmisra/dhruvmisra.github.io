@@ -6,14 +6,14 @@ interface DatetimesProps {
 }
 
 interface Props extends DatetimesProps {
-  size?: "sm" | "lg";
+  size?: "xs" | "lg";
   className?: string;
 }
 
 export default function Datetime({
   pubDatetime,
   modDatetime,
-  size = "sm",
+  size = "xs",
   className,
 }: Props) {
   const myDatetime = new Date(modDatetime ? modDatetime : pubDatetime);
@@ -25,7 +25,7 @@ export default function Datetime({
   });
   return (
     <div className={`flex items-center space-x-2 opacity-80 ${className}`}>
-      <span className={`italic ${size === "sm" ? "text-sm" : "text-base"}`}>
+      <span className={`italic ${size === "xs" ? "text-xs" : "text-base"}`}>
         <time dateTime={myDatetime.toISOString()}>{date}</time>
         <span className="sr-only">&nbsp;at&nbsp;</span>
       </span>

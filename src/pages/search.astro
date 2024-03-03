@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import { SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
-import Footer from "@components/Footer.astro";
 import SearchBar from "@components/Search";
 import getSortedPosts from "@utils/getSortedPosts";
 
@@ -16,5 +15,4 @@ const sortedPosts = getSortedPosts(posts);
   <Main pageTitle="Search" pageDesc="Search any article">
     <SearchBar client:load searchList={sortedPosts} />
   </Main>
-  <Footer />
 </Layout>
