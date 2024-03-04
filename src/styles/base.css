@@ -8,7 +8,7 @@
     /* --color-fill: 251, 254, 251; */
     --color-fill: 255, 255, 255;
     /* --color-fill: 235, 236, 255; */
-    --color-accent: 0, 108, 172;
+    --color-accent: 57, 113, 255;
     --color-text-base: 40, 39, 40;
     --color-card: 230, 230, 230;
     --color-card-muted: 205, 205, 205;
@@ -34,9 +34,9 @@
     --color-fill: 0, 1, 20;
     --color-accent: 255, 199, 57;
     --color-text-base: 234, 237, 243;
-    --color-card: 33, 34, 83;
+    --color-card: 33, 38, 57;
     --color-card-muted: 12, 14, 79;
-    --color-border: 19, 24, 135;
+    --color-border: 18, 19, 43;
   }
   #sun-svg,
   html[data-theme="dark"] #moon-svg {
@@ -70,7 +70,7 @@
     sm:scale-110;
   }
   .prose {
-    @apply prose-headings:!mb-3 prose-headings:!text-skin-accent prose-headings:!font-sans-serif
+    @apply prose-headings:!mb-3 prose-headings:!text-skin-accent prose-headings:!font-sans-serif prose-headings:!scroll-mt-8
     prose-p:!text-skin-base 
     prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8
     hover:prose-a:text-skin-accent prose-blockquote:!border-l-skin-accent
@@ -78,7 +78,7 @@
     prose-figcaption:!text-skin-base prose-figcaption:opacity-70
     prose-strong:!text-skin-base
     
-    prose-code:rounded prose-code:bg-skin-card 
+    prose-code:rounded prose-code:font-mono prose-code:bg-skin-card 
     prose-code:bg-opacity-75 prose-code:p-1 
     prose-code:before:!content-none prose-code:after:!content-none
     prose-ol:!text-skin-base 
@@ -108,6 +108,9 @@
   }
   .prose h2#table-of-contents + p {
     @apply hidden;
+  }
+  .prose code {
+    @apply font-normal;
   }
 
   code,

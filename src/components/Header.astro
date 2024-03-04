@@ -9,7 +9,8 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header class="sticky -top-0.5 z-10">
+<!-- <header class="sticky -top-0.5 z-10"> -->
+<header class="z-10">
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap rounded-md backdrop-blur-lg">
@@ -241,15 +242,15 @@ const { activeNav } = Astro.props;
       menuItems?.classList.toggle("display-none");
     });
 
-    const el = document.querySelector("header");
-    const observer = new IntersectionObserver(
-      ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-      { threshold: [1] }
-    );
-
-    if (el) {
-      observer.observe(el);
-    }
+    // const el = document.querySelector("header");
+    // const observer = new IntersectionObserver(
+    //   ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+    //   { threshold: [1] }
+    // );
+    //
+    // if (el) {
+    //   observer.observe(el);
+    // }
   }
 
   toggleNav();
